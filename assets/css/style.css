@@ -52,7 +52,7 @@ header nav ul li a:hover {
 nav {
     display: flex;
     justify-content: center;
-    gap: 35px;
+    gap: 30px;
 }
 nav a {
     color: white;
