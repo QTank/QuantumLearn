@@ -8,11 +8,41 @@ body {
     min-height: 100vh;
 }
 header {
-    background-color: #4CAF50;
+    background-image: url('../fig/qc.png'); /* Set your image here */
+    background-size: cover; /* Ensure the image covers the entire header */
+    background-position: center; /* Center the image */
     color: white;
-    padding: 15px 20px;
+    padding: 60px 20px;
     text-align: center;
+    height: auto;
 }
+
+header .logo h1 {
+    font-size: 3em;
+    margin: 0;
+    font-weight: bold;
+}
+
+header nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+header nav ul li a:hover {
+    text-decoration: underline;
+}
+
 .nav-container{
     background-color: #470016;
     color: #333335;
@@ -21,7 +51,7 @@ header {
 nav {
     display: flex;
     justify-content: center;
-    gap: 70px;
+    gap: 50px;
 }
 nav a {
     color: white;
@@ -56,4 +86,57 @@ footer {
     color: white;
     text-align: center;
     padding: 10px;
+}
+
+/* Sidebar Section */
+.sidebar {
+    flex: 0 0 25%; /* Take up 25% of the width */
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    main {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .content-wrapper {
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+    }
+
+    .blog-posts {
+        width: 100%;
+    }
+
+    .sidebar {
+        width: 100%;
+        margin-top: 20px;
+    }
 }
