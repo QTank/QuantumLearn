@@ -8,10 +8,11 @@ body {
     min-height: 100vh;
 }
 header {
-    background-image: url('../fig/qc.png'); /* Set your image here */
-    background-size: cover; /* Ensure the image covers the entire header */
-    background-position: center; /* Center the image */
-    color: white;
+/*    background-image: url('../fig/qc.png'); /* Set your image here */
+/*    background-size: cover; /* Ensure the image covers the entire header */
+/*    background-position: center; /* Center the image */
+/*    color: white; */
+    background-color: #4CAF50;
     padding: 60px 20px;
     text-align: center;
     height: auto;
