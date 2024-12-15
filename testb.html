@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Web Layout</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+            justify-content: center;
+        }
+        .content-box {
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            flex: 1 1 calc(30% - 40px);
+            box-sizing: border-box;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            nav {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            main {
+                flex-direction: column;
+            }
+            .content-box {
+                flex: 1 1 100%;
+            }
+        }
+
+        /* Laptop and larger styles */
+        @media (min-width: 769px) {
+            main {
+                flex-wrap: nowrap;
+                justify-content: space-between;
+            }
+            .content-box {
+                flex: 1 1 calc(30% - 20px);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Responsive Web Layout</h1>
+</header>
+
+<nav>
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Contact</a>
+</nav>
+
+<main>
+    <div class="content-box">
+        <h2>Box 1</h2>
+        <p>This is content for box 1. It adjusts based on the screen size.</p>
+    </div>
+    <div class="content-box">
+        <h2>Box 2</h2>
+        <p>This is content for box 2. It adjusts based on the screen size.</p>
+    </div>
+    <div class="content-box">
+        <h2>Box 3</h2>
+        <p>This is content for box 3. It adjusts based on the screen size.</p>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2024 Responsive Web Layout. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
