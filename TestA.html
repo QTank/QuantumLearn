@@ -5,26 +5,190 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Responsive Layout</title>
     <link rel="stylesheet" href="./assets/css/testa.css">
+    <style>/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+/* Navigation Bar */
+nav {
+    background-color: #333;
+    color: white;
+    background-color: #fff; /* Set background color to white */
+    color: #333; /* Dark text for better contrast */
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    margin-bottom: 0;
+}
+
+nav .logo h1 {
+    margin: 0;
+    color: #333; /* Ensure the logo text remains visible */
+    font-size: 25px;
+}
+
+nav .nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav .nav-links li {
+    margin-left: 20px;
+}
+
+nav .nav-links a {
+    color: white;
+    color: #333; /* Ensure the logo text remains visible */
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: color 0.3s;
+}
+
+nav .nav-links a:hover {
+    color: #3498db;
+}
+
+/* Main Content */
+main {
+    padding: 20px;
+}
+
+.intro {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.content {
+    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 equal-width columns */
+    gap: 20px; /* Space between columns and rows */
+    margin: 20px;
+}
+
+.column {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Image Container */
+.image-container {
+    padding: 20px 0;
+    text-align: center;
+    background-color: #f1f1f1; /* Optional background color */
+    margin-top: 0;
+}
+
+figure {
+    margin: 0;
+}
+
+img {
+    max-width: 100%; /* Ensure the image is responsive */
+    height: auto;
+}
+
+figcaption {
+    font-style: italic;
+    color: #555;
+    margin-top: 10px;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Responsive Design with Media Queries */
+@media (max-width: 768px) {
+    /* For Tablets and Small Screens */
+    .nav-links {
+        display: block;
+        text-align: center;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .column {
+        margin: 15px 0;
+        width: 80%;
+    }
+}
+
+@media (max-width: 480px) {
+    /* For Mobile Phones */
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav .logo {
+        margin-bottom: 10px;
+    }
+
+    .content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .column {
+        width: 100%;
+        margin: 10px 0;
+    }
+}
+</style>
 </head>
 <body>
     <!-- Navigation Bar -->
     <nav>
         <div class="logo">
-            <h1>My Website</h1>
+            <h1>DT</h1>
         </div>
         <ul class="nav-links">
             <li><a href="#">Home</a></li>
+            <li><a href="#">Post</a></li>
+            <li><a href="#">Research</a></li>
+            <li><a href="#">Tutorial</a></li>
             <li><a href="#">About</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Contact</a></li>
         </ul>
     </nav>
-
+    <!-- Image Container -->
+<!--    <div class="image-container">-->
+<!--        <figure>-->
+<!--            <img src="./assets/fig/qc.webp" alt="Descriptive Image" style="width: 100%; height: auto;">-->
+<!--        </figure>-->
+<!--    </div>-->
     <!-- Main Content -->
     <main>
         <section class="intro">
             <h2>Welcome to Our Blog!</h2>
-            <p>This is a blog about various topics, including technology, science, and much more.</p>
+
+
+            <p>Here, you can stay up to date with the latest research and explore in-depth lessons on quantum computing.
+    My goal is to deepen your understanding of this cutting-edge field, providing the resources you need to expand your
+    knowledge on quantum computing.</p>
         </section>
 
         <section class="content">
@@ -33,15 +197,32 @@
                 <p>Here are some of the most recent articles on quantum computing.</p>
             </div>
             <div class="column">
+                <h3>My Research</h3>
+                <p>Introduce my research on quantum computing.</p>
+            </div>
+            <div class="column">
+                <h3>Tutorial</h3>
+                <p>Learning quantum computing.</p>
+            </div>
+            <div class="column">
+                <h3>Popular Topics</h3>
+                <p>Explore the most discussed topics in our community.</p>
+            </div>
+            <div class="column">
+                <h3>Popular Topics</h3>
+                <p>Explore the most discussed topics in our community.</p>
+            </div>
+            <div class="column">
                 <h3>Popular Topics</h3>
                 <p>Explore the most discussed topics in our community.</p>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 My Website. All rights reserved.</p>
-    </footer>
+<!--    <footer>-->
+<!--        <p>&copy; 2024 My Website. All rights reserved.</p>-->
+<!--    </footer>-->
+    <div id="footer-placeholder"></div>
+    <script src="./assets/js/common.js"></script>
 </body>
 </html>
