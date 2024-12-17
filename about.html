@@ -1,13 +1,178 @@
-<!-- about.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
+    <title>Directory Profile</title>
+    <link rel="stylesheet" href="./assets/css/testa.css">
+
+    <style>
+        /* Main Container */
+        .aboutContainer {
+            max-width: 900px;
+            margin: 20px auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        /* Profile Section */
+        .profile-header {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background-color: white;
+        }
+
+        .profile-header img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-right: 20px;
+            border: 3px solid #ddd;
+        }
+
+        .profile-header .details {
+            flex: 1;
+        }
+
+        .profile-header h2 {
+            margin: 0;
+            font-size: 1.8em;
+        }
+
+        .profile-header p {
+            margin: 10px 0 0;
+            color: #555;
+        }
+
+        /* Content Section */
+        .detail {
+            padding: 20px;
+        }
+
+        /* LinkedIn Logo */
+        .linkedin-logo {
+            bottom: 20px;
+            right: 20px;
+        }
+
+        .linkedin-logo img {
+            width: 40px;
+            height: 40px;
+        }
+        /* Social Media Section */
+        .social-media {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            padding: 10px;
+            background-color: #fff;
+        }
+
+        .social-media a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+        }
+
+        .social-media img {
+            width: 100%;
+            height: auto;
+        }
+
+        .detail h3 {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            color: #3498db;
+        }
+
+        .detail p {
+            margin: 10px 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .profile-header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .profile-header img {
+                margin: 0 0 10px;
+            }
+
+            .profile-header .details {
+                margin: 0;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>About Us</h1>
-    <p>This is the about section of the website.</p>
+    <!-- Navigation -->
+    <!-- Placeholders for the header and footer -->
+    <div id="header-placeholder"></div>
+
+    <div class="aboutContainer">
+        <!-- Profile Header -->
+        <div class="profile-header">
+<!--            <img src="https://via.placeholder.com/150" alt="Profile Picture">-->
+            <div class="details">
+                <h2>Hongfeng Zhang</h2>
+                <p><b>Ph.D. student at UGhent</b></p>
+            </div>
+        </div>
+
+        <!-- Content Section -->
+        <div class="detail">
+            <h3>About</h3>
+            <p>
+                I am a third-year Ph.D. student at the University of Ghent, where I specialize in the fascinating intersection of quantum computing and bioinformatics.
+            </p>
+
+            <h3>Research Interests</h3>
+            <p>
+                mRNA Codon Optimization, mRNA Folding, Protein Folding, and Genome Sequence Reconstruction
+            </p>
+
+            <h3>Education</h3>
+            <p>
+                - Ph.D. in Quantum Computing Application, University of Ghent<br>
+                - M.Sc. in Microelectronics and Solid-state Physics, University of Chinese Academic of Science
+            </p>
+            <h3>Introduction</h3>
+            <p>In my current research, I focus on mRNA codon optimization and RNA folding, delving into the application of quantum computing to address pressing challenges in bioinformatics. Specifically, my goal is to contribute to the development of mRNA vaccines, a field where quantum algorithms hold immense promise for optimizing sequences and enhancing vaccine efficacy.
+The convergence of quantum computing and bioinformatics presents unprecedented opportunities. My work involves employing advanced quantum algorithms to analyze biological data, striving to uncover novel insights that can revolutionize vaccine design. I am particularly excited about the potential impact my research could have on the fight against infectious diseases.
+I am also excited to explore the potential of quantum computing to address challenging problems across various fields that require supercomputing abilities. With quantum methods, I aim to tackle complex computational tasks in these fields. I am eager to collaborate with experts proficient in classical or quantum approaches within these fields. I seek to unlock new insights and solution.</p>
+            <h3>Publications</h3>
+            <p><a href="https://arxiv.org/abs/2404.14858">A resource-efficient variational quantum algorithm for mRNA codon optimization</a> at ArXiv</p>
+            <h3>Contact</h3>
+            <p>
+                Feel free to connect with me via email for more details.
+            </p>
+        </div>
+        <div class="social-media">
+            <a href="https://www.linkedin.com/in/zhang-hongfeng-176122270/" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn">
+            </a>
+            <a href="https://github.com/QTank" target="_blank">
+                <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub">
+            </a>
+            <a href="https://www.youtube.com" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube">
+            </a>
+            <a href="mailto:tankzhang19@gmail.com" target="_blank">
+                <img src="./assets/fig/email_icon.jpeg" alt="Email Icon">
+            </a>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+  <!-- Include the common script for dynamic loading -->
+    <script src="./assets/js/common.js"></script>
 </body>
 </html>
