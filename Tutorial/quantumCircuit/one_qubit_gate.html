@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One-Qubit Gate</title>
+    <link rel="stylesheet" href="../../assets/css/testa.css">
+    <link rel="stylesheet" href="../../assets/css/research.css">
+    <link rel="stylesheet" href="../../assets/css/post.css">
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+</head>
+
+<body>
+    <div id="header-placeholder"></div>
+    <main class="main-content">
+    <article class="blog-post">
+      <h1 class="blog-title">One-Qubit Gate</h1>
+      <p class="post-date">December 15, 2024</p>
+
+      <div class="post-content">
+          <h3>What is quantum gates?</h3>
+          <p>Quantum logic Gates, also called quantum gates, are fundamental components in the field of quantum computing. Similar to classical logic gates which are the building blocks of classical circuits, quantum gates are used to construct quantum circuits.
+				These gates manipulate quantum bits, from one quantum state \(|\psi>\) to another state \(|\psi'>\).</p>
+          <p>For example, consider a quantum gate denoted as U. The relationship between the input quantum state \(|\psi>\) and output state \(|\psi'>\) can be expressed: </p>
+          <p>\[|\psi'> = U|\psi>\]</p>
+          <p>Here, the quantum state \(|\psi>\) and \(|\psi'>\) are unitary vectors, so the operator U is unitary.
+				This unitary is the most important property of quantum gates, as it ensures the preservation of probability and the reversibility of quantum operations. </p>
+
+          <h3>What is one-qubit gate?</h3>
+          <p>A one-qubit gate is a quantum gate that operates on a single qubit, applying a unitary transformation to change its state.
+              These gates are the quantum analogs of classical logic gates but work on superpositions of states,
+              represented as vectors in a 2D complex Hilbert space.</p>
+          <p>One-qubit gates include Pauli Gates, Hadamard Gate, Phase Gates, Rotation Gates. </p>
+
+          <h3>X gate</h3>
+          <p><b>X gate:</b> also known as the Pauli-X gate or quantum Not gate, flips the state of a qubit from |0> to |1> and vice versa.
+				It performs the same function as the NOT gate in classical computing, which flips a bit.
+				While the classical NOT gate operates on classical bits, the quantum X gate operates on quantum states. </p>
+          <p>Because the one-qubit input and output of X gate are represented by vectors, the X gate is expressed as a matrix.
+				This matrix representation of the X gate is a concise way to describe the operation performed by the gate on qubits.
+          </p>
+          <div class="figure-container">
+              <figure>
+                  <img src="../../assets/fig/tutorial/circuit/X_gate.png">
+              </figure>
+          </div>
+          <p>The matrix representation of X gate is given by: </p>
+			<p>\[X = \begin{pmatrix}
+            0 & 1 \\
+            1 & 0 \\
+            \end{pmatrix}\]</p>
+			<p>This matrix shows how the gate flips the basis states |0> and |1>. Understanding the matrix representation of quantum gates can be crucial for predicting the final quantum states after complex quantum circuits have been applied.</p>
+
+			<p>To illustrate how the X gate operates on a qubit, consider an example where X gate is applied to an input qubit \(|\psi>\).</p>
+			<p>Suppose the input qubit is in the state: </p>
+			<p>\[|\psi> = \alpha|0> + \beta|1>\]</p>
+			<p>where \(\alpha\) and \(\beta\) are complex amplitudes of |0> and |1> respectively.</p>
+
+
+			<p>To find the output state \(\psi'>\) after applying X gate, perform the matrix multiplication of X with
+			the vector representation of \(\psi>\): </p>
+
+          <p>\[
+
+				\begin{align}
+
+				|\psi'> &= X|\psi> \\
+					&= \begin{pmatrix}
+            			0 & 1 \\
+            			1 & 0 \\
+            			\end{pmatrix} \begin{pmatrix}
+            							\alpha \\
+            							\beta \\
+            						\end{pmatrix} \\
+					&= \begin{pmatrix}
+            				\beta \\
+            				\alpha \\
+            			\end{pmatrix} \\
+					&= \beta|0> + \alpha|1>
+
+				\end{align}
+				\]</p>
+
+          <p>Thus, the outcome state \(|\psi'>\) is:</p>
+
+          <p>\[|\psi'> = \beta|0> + \alpha|1>\]</p>
+          <p>This output shows that the X gate flips the amplitude of |0> and |1>.</p>
+
+          <h3>Y Gate</h3>
+          <p><b>Y gate:</b> also known the Pauli-Y gate, introduces a phase shift of 180 degrees when applied to |1>, and -180 degrees when applied to |0>. In other words, Y gate flips the basis states and introduces a complex phase shift.</p>
+          <div class="figure-container">
+              <figure>
+                  <img src="../../assets/fig/tutorial/circuit/y_gate.png">
+              </figure>
+          </div>
+          <p>The matrix representation of the Y gate is given by: </p>
+			<p>\[Y = \begin{pmatrix}
+            0 & -i \\
+            i & 0 \\
+            \end{pmatrix}\]</p>
+
+
+			<p>To illustrate the operation of Y gate on a qubit, consider the input qubit state \(|\psi>\). </p>
+			<p>\[|\psi> = \alpha|0> + \beta|1>\]</p>
+			<p>After applying Y gate to the input qubit: </p>
+			<p>\[
+				\begin{align}
+					|\psi'> &= Y|\psi> \\
+						    &= \begin{pmatrix}
+								0 & -i \\
+            					i & 0 \\
+            					\end{pmatrix} \begin{pmatrix}
+            									\alpha \\
+            									\beta \\
+            								\end{pmatrix}\\
+							&= \begin{pmatrix}
+            						i\beta \\
+            						-i\alpha \\
+            					\end{pmatrix} \\
+							&= i\beta|0> - i\alpha|1>
+				\end{align}
+				\]</p>
+
+			<p>Thus, the outcome state \(|\psi'>\) is: </p>
+			<p>\[|\psi'> = - i\alpha|1> + i\beta|0>\]</p>
+
+
+				<p>When the input qubit is |0>, it means that \(\alpha\) = 1 and \(\beta\) = 0, and the output state is -i|1>.</p>
+				<p>When the input qubit is |1>, it means that \(\alpha\) = 0 and \(\beta\) = 1, and the output state is i|0>.</p>
+            <h3>Z Gate</h3>
+			<p><b>Z gate:</b>, also known as the Paulit-Z gate, introduces a phase flip of 180 degrees when applied to |1>, and no changing when applied to |0>.</p>
+            <div class="figure-container">
+              <figure>
+                  <img src="../../assets/fig/tutorial/circuit/z_gate.png">
+              </figure>
+            </div>
+
+
+            <p>The matrix representation of Z gate is given by:</p>
+			<p>\[Z = \begin{pmatrix}
+            1 & 0 \\
+            0 & -1 \\
+            \end{pmatrix}\]</p>
+
+
+			<p>To illustrate the operation of the Z gate on a qubit, consider the input qubit \(|\psi>\)</p>
+			<p>\[|\psi> = \alpha|0> + \beta|1>\]</p>
+			<p>where \(\alpha\) and \(\beta\) are the amplitude of the quantum state |0> and |1>. </p>
+			<p>After applying Z gate to the input qubit \(|\psi>\), </p>
+			<p>\[
+				\begin{align}
+					|\psi'> &= Z|\psi> \\
+							&= \begin{pmatrix}
+            						1 & 0 \\
+            						0 & -1 \\
+            					\end{pmatrix} \begin{pmatrix}
+            										\alpha \\
+            										\beta \\
+            								\end{pmatrix} \\
+							& = \begin{pmatrix}
+            							\alpha \\
+            							-\beta \\
+            					\end{pmatrix} \\
+							&= \alpha|0> - \beta|1>
+				\end{align}
+				\]</p>
+
+			<p>Thus, the outcome state \(|\psi'>\) is:</p>
+			<p>\[|\psi'> = \alpha|0> - \beta|1>\]</p>
+
+          <h3>Hadamard Gate</h3>
+          <p><b>Hadamare gate:</b> often denoted as H gate, is a fundamental block used to create superposition states.
+				When applied to a qubit |0> or |1>, the H gate changes the basis state into an equal probability of being |0> and |1>.</p>
+          <div class="figure-container">
+              <figure>
+                  <img src="../../assets/fig/tutorial/circuit/H.png">
+              </figure>
+            </div>
+          <p> The matrix representation of H gate is given by:</p>
+			<p>\[H = \frac{1}{\sqrt{2}}\begin{pmatrix}
+            1 & 1 \\
+            1 & -1 \\
+            \end{pmatrix}\]</p>
+
+			<p>To illustrate the operation of the H gate on a qubit, Z gate is applied to the input qubit |0> and |1> respectively,</p>
+
+			<p>\[|\psi'> = H|0> = \frac{1}{\sqrt{2}}\begin{pmatrix}
+            1 & 1 \\
+            1 & -1 \\
+            \end{pmatrix} \begin{pmatrix}
+            1 \\
+            0 \\
+            \end{pmatrix} = \frac{1}{\sqrt{2}}\begin{pmatrix}
+            1 \\
+            1 \\
+            \end{pmatrix} = \frac{1}{\sqrt{2}}(|0> + |1>)\]</p>
+
+
+			<p>\[|\psi'> = H|1> = \frac{1}{\sqrt{2}}\begin{pmatrix}
+            1 & 1 \\
+            1 & -1 \\
+            \end{pmatrix} \begin{pmatrix}
+            0 \\
+            1 \\
+            \end{pmatrix} = \frac{1}{\sqrt{2}}\begin{pmatrix}
+            1 \\
+            -1 \\
+            \end{pmatrix} = \frac{1}{\sqrt{2}}(|0>-|1>)\]</p>
+
+			<p>From the outcome, we can see that the H gate creates a superposition when applyied H gate on a qubit |0> or |1>.</p>
+			<p>We consider a general case,  the input qubit \(|\psi>\), </p>
+
+			<p>\[|\psi> = \alpha|0> + \beta|1>\]</p>
+			<p>After applying H gate to the input qubit \(|\psi>\), </p>
+			<p>\[
+				\begin{align}
+				|\psi'> &= H(\alpha|0> + \beta|1>) \\
+						&= \alpha(\frac{1}{\sqrt{2}}(|0> + |1>)) + \beta(\frac{1}{\sqrt{2}}(|0> - |1>)) \\
+			 			&=\frac{\alpha+\beta}{\sqrt{2}}|0>+\frac{\alpha-\beta}{\sqrt{2}}|1>
+				\end{align}
+				\]
+			</p>
+			<p>Here, X, H and Z gate has relations, Z gate obtained by X and H gate,
+				and X gate obtained by Z and H gate.
+				\[
+					X = HZH \\
+					Z = HXH
+				\]
+			</p>
+			<p>Reader can verify the relation between X, H and Z gate through linear algebra.</p>
+
+            <h3>S Gate</h3>
+            <p><b>S gate</b>: is called phase gate, which is a rotation of a qubit about z-axis by \(\pi\). </p>
+
+			<p>The matrix representation of S gate:</p>
+			<p>\[
+				T = \begin{pmatrix}
+            	1 & 0 \\
+            	0 & i
+				\end{pmatrix}\]</p>
+            <h3>T Gate</h3>
+			<p><b>T gate</b>: is called phase gate, which is a rotation of a qubit about z-axis by \(\frac{\pi}{2}\). </p>
+
+			<p>The matrix representation of T gate:</p>
+			<p>\[
+				T = \begin{pmatrix}
+            	1 & 0 \\
+            	0 & e^{i\frac{\pi}{4}}
+				\end{pmatrix}\]</p>
+            <h3>Rotation X Gate</h3>
+            <p><b>Rotation X Gate</b>: also known as Rx gate, performs a rotation of a qubit around the x-axis by a specified angle \(\theta\).</p>
+			<p>The matrix representation of Rx gate:</p>
+			<p>\[R_{x}(\theta) = \begin{pmatrix}
+            	\cos\frac{\theta}{2} & -i \sin\frac{\theta}{2} \\
+            	-i \sin\frac{\theta}{2} &  \cos\frac{\theta}{2}\\
+            \end{pmatrix}\]</p>
+			<p>where \(\theta\) is the angle by which the qubit's state is rotated around the x-axis.</p>
+			<h3>Rotation Y Gate</h3>
+            <p><b>Rotation Y Gate</b>: also known as Ry gate, performs a rotation of a qubit around the y-axis by a specified angle \(\theta\). </p>
+			<p>The matrix representation of Ry gate:</p>
+			<p>\[R_{y}(\theta) = \begin{pmatrix}
+            	\cos\frac{\theta}{2} & -\sin\frac{\theta}{2} \\
+            	\sin\frac{\theta}{2} &  \cos\frac{\theta}{2}\\
+            \end{pmatrix}\]</p>
+			<p>where \(\theta\) is the angle by which the qubit's state is rotated around the y-axis.</p>
+			<h3>Rotation Z Gate</h3>
+            <p><b>Rotation Z Gate</b>: also known as Rz gate, performs a rotation of a qubit around the z-axis by a specified angle \(\theta\). </p>
+			<p>The matrix representation of Rz gate:</p>
+			<p>\[R_{z}(\theta) = \begin{pmatrix}
+            	e^{-i\frac{\theta}{2}} & 0 \\
+            	0 & e^{i\frac{\theta}{2}} \\
+            \end{pmatrix}\]</p>
+
+
+			<p>where \(\theta\) is the angle by which the qubit's state is rotated around the z-axis.</p>
+
+          <p></p>
+      </div>
+    </article>
+    </main>
+    <div id="footer-placeholder"></div>
+    <script src="../../assets/js/common.js"></script>
+</body>
+</html>

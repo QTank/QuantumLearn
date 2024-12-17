@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mRNA Codon Optimization</title>
+    <link rel="stylesheet" href="../assets/css/testa.css">
+    <link rel="stylesheet" href="../assets/css/research.css">
+    <link rel="stylesheet" href="../assets/css/post.css">
+
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+
+    <style>
+        table {
+            width: 85%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            align: center;
+        }
+        th, td {
+            padding: 5px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #fff;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+
+.process-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.process-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 20px;
+    text-align: center;
+}
+
+.step-circle {
+    background-color: #3498db;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+}
+
+.step-content {
+    margin-top: 10px;
+    font-size: 13px;
+}
+
+.arrow {
+    font-size: 30px;
+    color: #333;
+    margin: 0 10px;
+}
+
+@media (max-width: 768px) {
+    .process-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .arrow {
+        display: none;
+
+        content: '↓';
+    }
+    .process-step {
+        margin-bottom: 20px;
+    }
+}
+
+
+</style>
+</head>
+
+<body>
+    <div id="header-placeholder"></div>
+
+    <main class="main-container">
+        <article class="blog-post">
+            <h1 class="blog-title">Protein Folding on quantum computing</h1>
+            <p class="post-date">December 15, 2024</p>
+            <div class="post-content">
+                <h3>What is mRNA?</h3>
+                <p>mRNA is made up of four nucleotide bases: adenine (A), cytosine (C), guanine (G), and uracil (U).
+                </p>
+
+                <h3>What is protein?</h3>
+                <p>Protein is made up of 20 types of amino acids, which are linked together in a linear sequence
+                    to form long chains. These chains fold into specific three-dimensional shapes that determines protein's function.
+                </p>
+
+                <h3>What is the relationship between mRNA and protein?</h3>
+                <p>
+                    mRNA serves as a template for synthesizing proteins by assembling amino acids in a specific order.
+                    This procedure is called translation. A set of three nucleotide bases, such as AUA, UCU, called codons, specific a particular amino acid.
+                </p>
+                <div class="figure-container">
+                    <figure>
+                        <img src="../assets/fig/research/mRNACodonOpt/codon.png">
+                    </figure>
+                </div>
+                <h3>Synonymous codons</h3>
+                <p>A codon has three nucleotides. Three nucleotides can have 64 possible codons (4 ^ 3 = 64), however, there are only 20 types of amino acids.
+                    So some codons that can encode the same amino acid is called Synonymous codons.</p>
+                <P>The table above shows a clearer mapping between amino acids and their corresponding mRNA codons.</P>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Amino Acid</th>
+                            <th>mRNA Codons</th>
+                            <th>Amino Acid</th>
+                            <th>mRNA Codons</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Ala (A)</td>
+                            <td>GCU, GCC, GCA, GCG</td>
+                            <td>Ile (I)</td>
+                            <td>AUU, AUC, AUA</td>
+                        </tr>
+                        <tr>
+                            <td>Arg (R)</td>
+                            <td>CGU, CGC, CGG, AGA, ACG</td>
+                            <td>Leu (L)</td>
+                            <td>CUU, CUC, CUA, CUG, UUA, UUC</td>
+                        </tr>
+                        <tr>
+                            <td>Asn (N)</td>
+                            <td>AAU, AAC</td>
+                            <td>Lys (K)</td>
+                            <td>AAA, AAG</td>
+                        </tr>
+                        <tr>
+                            <td>Asp (D)</td>
+                            <td>GAU, GAC</td>
+                            <td>Met (M)</td>
+                            <td>AUG</td>
+                        </tr>
+                        <tr>
+                            <td>Asn or Asp (B)</td>
+                            <td>AAU, AAC, GAU, GAC</td>
+                            <td>Rhe (F)</td>
+                            <td>UUU, UUC</td>
+                        </tr>
+                        <tr>
+                            <td>Cys (C)</td>
+                            <td>UGU, UGC</td>
+                            <td>Pro (P)</td>
+                            <td>CCU, CCC, CCA, CCG</td>
+                        </tr>
+                        <tr>
+                            <td>Gln (Q)</td>
+                            <td>CAA, CAG</td>
+                            <td>Ser (S)</td>
+                            <td>UCU, UCC, UCA, UCG, AGU, AGC</td>
+                        </tr>
+                        <tr>
+                            <td>Glu (E)</td>
+                            <td>GAA, GAG</td>
+                            <td>Thr (T)</td>
+                            <td>ACU, ACC, ACA, ACG</td>
+                        </tr>
+                        <tr>
+                            <td>Gln or Glu (Z)</td>
+                            <td>CAA, CAG, GAA, GAG</td>
+                            <td>Trp (W)</td>
+                            <td>UGG</td>
+                        </tr>
+                        <tr>
+                            <td>Gly (G)</td>
+                            <td>GGU, GGC, GGA, GGG</td>
+                            <td>Tyr (Y)</td>
+                            <td>UAU, UAC</td>
+                        </tr>
+                        <tr>
+                            <td>His (H)</td>
+                            <td>CAU, CAC</td>
+                            <td>Val (V)</td>
+                            <td>GUU, GUC, GUA, GUG</td>
+                        </tr>
+                        <tr>
+                            <td>START</td>
+                            <td>AUG, CUG, UUG</td>
+                            <td>STOP</td>
+                            <td>UAA, UGA, UAG</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h4>Table: Amino Acids and Their mRNA Codon Mappings</h4>
+
+                <h3>What is mRNA codon optimization?</h3>
+                <p>In mRNA vaccine development, when designing an mRNA sequence to produce a specific protein (or antigen) in host cells,
+                    it's important to consider the fact that each amino acid in the protein sequence can be encoded
+                    by multiple possible mRNA codons.
+                </p>
+                <p>
+                    mRNA codon optimization refers to the process of selecting the best mRNA codons
+                    for encoding a specific amino acid sequence in order to enhance protein expression and stability.
+                    In mRNA vaccine development, this step is essential for ensuring that mRNA vaccine produces the target
+                    protein effectively.
+                </p>
+
+                <p>This is a Combinatorial Optimization Problem because for each amino acid, there are multiple synonymous codons that encode the same amino acid. This results in a large number of possible codon sequences for a given protein. The solution space grows exponentially, with the total number of possible codon combinations being 6^N, where N is the length of the protein. This is because, in the worst case, each amino acid can be encoded by up to 6 different codons. As the protein length increases, the number of possible codon sequences expands exponentially, creating a vast search space that must be explored to find the optimal solution.</p>
+                <div class="figure-container">
+                    <figure>
+                        <img src="../assets/fig/research/mRNACodonOpt/optimization.png">
+                    </figure>
+                </div>
+
+
+                <h3>Quantum Computing Approach for mRNA codon optimization</h3>
+                <p>Quantum computing offers significant potential advantages over classical computing, especially in solving complex problems that involve large amounts of data, intricate computations, or combinatorial optimization.</p>
+                <p>I have developed a quantum computing-based method for mRNA codon optimization, addressing the combinatorial complexity of selecting optimal codons for protein expression. This approach leverages the unique advantages of quantum computing to efficiently navigate the vast solution space of synonymous codon combinations.</p>
+                <div class="process-container">
+                    <div class="process-step">
+                        <div class="step-circle">1</div>
+                        <div class="step-content">Step 1: Encode Codons to Qubits</div>
+                    </div>
+                    <div class="arrow">→</div>
+
+                    <div class="process-step">
+                        <div class="step-circle">2</div>
+                        <div class="step-content">Step 2: Construct an energy function</div>
+                    </div>
+                    <div class="arrow">→</div>
+
+                    <div class="process-step">
+                        <div class="step-circle">3</div>
+                        <div class="step-content">Step 3: Run VQE</div>
+                    </div>
+                    <div class="arrow">→</div>
+
+                    <div class="process-step">
+                        <div class="step-circle">4</div>
+                        <div class="step-content">Step 4: Decode to mRNA sequences</div>
+                    </div>
+                </div>
+                <p>Here is the quantum computing procedure for mRNA codon optimization as illustrated in the figure.</p>
+                <h3>Step 1. Encode codons to Qubits</h3>
+                <p>When applying quantum computing, classical data is encoded into qubits for processing. There are typically
+                    two kinds of encoding: one-hot and dense encoding. </p>
+                <p><b>One-hot encoding: </b>each synonymous codon for an amino acid is represented by a binary vector,
+                    where only one position in the vector is ”1” (indicating the selected codon), and other positions are “0”.
+                    For example, amino acid Ala (A) and Leu (L) are encoded by one-hot method at the following tables.
+                </p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Synonymous Codons of Leu</th>
+                            <th>One-Hot Encoding</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>CUU</td>
+                            <td>100000</td>
+                        </tr>
+                        <tr>
+                            <td>CUC</td>
+                            <td>010000</td>
+                        </tr>
+                        <tr>
+                            <td>CUA</td>
+                            <td>001000</td>
+                        </tr>
+                        <tr>
+                            <td>CUG</td>
+                            <td>000100</td>
+                        </tr>
+                        <tr>
+                            <td>UUA</td>
+                            <td>000010</td>
+                        </tr>
+                        <tr>
+                            <td>UUG</td>
+                            <td>000001</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>Table 1 Leu (L) is encoded by one-hot method </p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Synonymous Codons of Ala (A)</th>
+                            <th>Dense Encoding</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>GCU</td>
+                            <td>1000</td>
+                        </tr>
+                        <tr>
+                            <td>GCC</td>
+                            <td>0100</td>
+                        </tr>
+                        <tr>
+                            <td>GCA</td>
+                            <td>0010</td>
+                        </tr>
+                        <tr>
+                            <td>GCG</td>
+                            <td>0001</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>Table 2 Ala (A) is encoded by one-hot method</p>
+                <p>Note: Redundant string of Leu (L) or Ala (A): Have all “0” or multiple ”1”. For example,
+                110110 for Leu is a redundant string, and 1110 for Ala is also a redundant string. </p>
+
+                <p>The required number of qubits for a protein with the length of N:</p>
+                <p>\[S_{one-hot} = \sum_{i=0}^{N-1} C_{i}\]</p>
+                <p>Where \(C_i\) represents the number of synonymous codons for the i-th amino acid in a protein.</p>
+
+                <p><b>Dense encoding: </b>
+                    apply a logarithmic mapping to represent synonymous codons. Amino acid Ala (A) and Leu (L) are still as examples at the following table.
+                </p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Synonymous Codons of Leu (L)</th>
+                            <th>Dense Encoding</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>CUU</td>
+                            <td>000</td>
+                        </tr>
+                        <tr>
+                            <td>CUC</td>
+                            <td>001</td>
+                        </tr>
+                        <tr>
+                            <td>CUA</td>
+                            <td>010</td>
+                        </tr>
+                        <tr>
+                            <td>CUG</td>
+                            <td>011</td>
+                        </tr>
+                        <tr>
+                            <td>UUA</td>
+                            <td>100</td>
+                        </tr>
+                        <tr>
+                            <td>UUG</td>
+                            <td>101</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>Table 3 Leu (L) is encoded by dense method</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Synonymous Codons of Ala (A)</th>
+                            <th>Dense Encoding</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>GCU</td>
+                            <td>00</td>
+                        </tr>
+                        <tr>
+                            <td>GCC</td>
+                            <td>01</td>
+                        </tr>
+                        <tr>
+                            <td>GCA</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>GCG</td>
+                            <td>11</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>Table 4 Ala (A) is encoded by dense method</p>
+
+                <p>Note: In the dense encoding, 110 and 111 for Leu are redundant strings, and Ala has no redundant string.</p>
+
+                <p>The required number of qubits for a protein with the length of N:</p>
+                <p>\[S_{dense} = \sum_{i=0}^{N-1} \lceil \text{log }C_{i} \rceil\]</p>
+                <p>Where \(C_{i}\)  represents the number of synonymous codons for the i-th amino acid in a protein.</p>
+
+
+            <table>
+                <thead>
+                    <th>Encoding method</th>
+                    <th>Qubits required</th>
+                    <th>Pros</th>
+                    <th>Cons</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>One-Hot</td>
+                        <td>O(N)</td>
+                        <td>Clear representation and simple for the energy function</td>
+                        <td>Resource-intensive for large data</td>
+                    </tr>
+                    <tr>
+                        <td>Dense</td>
+                        <td>Log(N)</td>
+                        <td>Efficient resource</td>
+                        <td>Complex for the energy fucntion</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>Table 5 Comparison between one-hot and dense encoding</p>
+
+            <p>Dense encoding was used for mRNA codon optimization because it used fewer qubits than one-hot, making it
+            more scalable and efficient for quantum computing.</p>
+
+            <h3>Step 2. Construct the energy function</h3>
+            <p>The target of mRNA codon optimization is to select the optimal mRNA sequences that can efficiently translate
+            to a specific protein. This process takes into account several factors, including usage bias, GC target content,
+                and the avoidance of consecutive repeats. </p>
+            <p>- Usage bias: it refers to the preference of certain synonymous codons over others for encoding
+            the same amino acid. Optimizing codon usage ensures that the mRNA sequence aligns with the host organism's translation,
+            enhancing protein expression and stability.</p>
+            <p>- GC target content: it refers to the percentage of G and C nucleotides among the mRNA sequence in different organism.
+                Deviating too far from the target GC content can impact mRNA translation efficiency.</p>
+            <p>- Avoiding repeats: consecutive nucleotide repeats can lead to ribosomal stall, translation errors, and unwanted
+                secondary structure of mRNA. Minimizing repeats can achieve higher protein production. </p>
+            <p>- Penalty: redundant strings are penalized because these codons can not translate correct amino acids.</p>
+            <p>\[H(q) = H_{f}(q) + H_{gc}(q) + H_{r}(q) + H_{p}(q)\]</p>
+
+            <p>Where \(H_{f}\)(q) represents codon usage bias, \(H_{gc}\)(q) represents target GC concentration,
+                \(H_r\)(q) for sequentially repeated nucleotides, \(H_p\)(q) for constraint items related to redundant encoding.
+            </p>
+
+            <p>The paper <a href="https://arxiv.org/abs/2404.14858">[1]</a> introduced how to construct the energy function in detail for mRNA codon optimization through dense encoding. </p>
+            <h3>Step 3. Run VQE</h3>
+
+                <p>After constructing the energy function, VQE was executed on Quantum simulators for finding the optimal mRNA sequence. </p>
+                <p>- Dataset: 160 sequences, each has 8 amino acids</p>
+                <p>- Platform: quantum simulator</p>
+                <p>- VQE library: SamplingVQE</p>
+                <p>- Ansatz : EfficientSU2</p>
+                <p>- Hamiltonian: From the energy function</p>
+                <p>- Optimization: COBYLA</p>
+
+            <h3>Step 4. Decode to mRNA sequences</h3>
+                <p>The result from the Variational Quantum Eigensolver (VQE) is a qubit string, which must be decoded into the corresponding mRNA sequence. This decoded sequence is the final outcome of the mRNA codon optimization process. The final mRNA sequence represents the optimal codon choices that will efficiently translate into the target protein. This optimized sequence is designed to ensure maximum protein expression, stability, and translation efficiency in the host cells, considering factors like codon usage bias, GC content, and avoiding repeats.</p>
+
+                <b>Results from a simple example: </b>
+                <p>&nbsp;    - Input Amino Acid Sequence: HAIHVSGT</p>
+                <p>&nbsp;    - The required number of qubit: 15</p>
+                <p>&nbsp;    - Minimal Value Achieved: 3937.05</p>
+                <p>&nbsp;    - Final String Representation: 110001100000101</p>
+                <p>&nbsp;    - Optimal mRNA Codon Sequence: CAU GCG AUA CAU GUG AGC GGC ACC</p>
+                <b>Optimized Codon Mapping: </b>
+                <p>&nbsp;   H → 1 → CAU</p>
+                <p>&nbsp;   A → 10 → GCG</p>
+                <p>&nbsp;   I → 00 → AUA</p>
+                <p>&nbsp;   H → 1 → CAU </p>
+                <p>&nbsp;   V → 10 → GUG</p>
+                <p>&nbsp;   S → 000 → AGC</p>
+                <p>&nbsp;   G → 01 → GGC</p>
+                <p>&nbsp;   T → 01 → ACC</p>
+
+                <h3>Conclusion</h3>
+                <p>In conclusion, mRNA codon optimization is a crucial step in mRNA vaccine development and protein expression. By leveraging quantum computing techniques, particularly the Variational Quantum Eigensolver (VQE), we can efficiently explore the vast solution space of codon combinations. The quantum approach allows for the optimization of mRNA sequences by selecting the most suitable codons, considering factors such as codon usage bias, GC content, and avoiding repeated patterns. The final outcome is an optimized mRNA sequence, capable of effectively translating into the desired protein, thereby enhancing protein expression and stability in host cells. This innovative method opens up new possibilities for improving the efficiency of mRNA vaccines and other biotechnological applications, demonstrating the potential of quantum computing in solving complex biological problems.</p>
+                <p>While the method demonstrates the potential of quantum computing for mRNA codon optimization, it is currently limited by the finite number of qubits available on quantum computers. As a result, it may not be feasible to solve protein sequences of large-scale real-world length at this stage. However, this approach serves as a proof of concept, showcasing that quantum computing can be applied to the optimization of mRNA codons. As quantum hardware continues to evolve, it is expected that the scalability of these methods will improve, enabling them to tackle more complex biological problems and larger protein sequences in the future.</p>
+                <h3>Reference</h3>
+                <p>1. Zhang, H., Sarkar, A., & Bertels, K. (2024). A resource-efficient variational quantum algorithm for mRNA codon optimization. arXiv preprint arXiv:2404.14858.</p>
+                <p>2. Dillion M Fox, Kim M Branson, and Ross C Walker. mrna codon optimization with quantum computers. PloS one, 16(10):e0259101, 2021.</p>
+                <p></p>
+            </div>
+        </article>
+    </main>
+    <div id="footer-placeholder"></div>
+    <script src="../assets/js/common.js"></script>
+</body>
+</html>
