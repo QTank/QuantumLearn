@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn QC</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+
+<!--<header>-->
+<!--    <h1>Learn Quantum Computing with me</h1>-->
+<!--</header>-->
+
+<!--<div class="nav-container">-->
+<!--    <nav>-->
+<!--        <a href="#">Home</a>-->
+<!--        <a href="#">Post</a>-->
+<!--        <a href="#">Tutorial</a>-->
+<!--        <a href="#">Research</a>-->
+<!--        <a href="#">Contact</a>-->
+<!--    </nav>-->
+<!--</div>-->
+
+    <!-- Placeholders for the header and footer -->
+    <div id="header-placeholder"></div>
+
+<main>
+    <h2>Welcome to the blog</h2>
+    <p>Here, you can stay up to date with the latest research and explore in-depth lessons on quantum computing.
+    My goal is to deepen your understanding of this cutting-edge field, providing the resources you need to expand your
+    knowledge on quantum computing.</p>
+
+    <div class="blog-post">
+        <h3>Lesson 1: Introduction to HTML</h3>
+        <p>HTML (HyperText Markup Language) is the standard markup language used to create web pages. It provides the structure of a webpage using elements like headings, paragraphs, and links.</p>
+        <ul>
+            <li><strong>Heading:</strong> Defines the titles or subtitles.</li>
+            <li><strong>Paragraph:</strong> Contains text content.</li>
+            <li><strong>Link:</strong> Navigates to other pages or resources.</li>
+        </ul>
+        <p>HTML is essential for building the web. Start practicing by writing simple HTML code!</p>
+    </div>
+
+    <div class="blog-post">
+        <h3>Lesson 2: Basics of CSS</h3>
+        <p>CSS (Cascading Style Sheets) is used to style and layout web pages. It allows you to add colors, fonts, and responsive designs.</p>
+        <ul>
+            <li><strong>Selector:</strong> Targets HTML elements.</li>
+            <li><strong>Property:</strong> Defines the style (e.g., color, font-size).</li>
+            <li><strong>Value:</strong> Specifies the property setting (e.g., red, 16px).</li>
+        </ul>
+        <p>CSS makes websites visually appealing. Experiment with different styles to see the impact!</p>
+    </div>
+</main>
+
+<!--<footer>-->
+<!--    <p>&copy; 2024 Learn with Us. All rights reserved.</p>-->
+<!--</footer>-->
+
+    <div id="footer-placeholder"></div>
+  <!-- Include the common script for dynamic loading -->
+    <script src="./assets/js/common.js"></script>
+</body>
+</html>
