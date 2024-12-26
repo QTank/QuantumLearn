@@ -3,63 +3,205 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learn QC</title>
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Responsive Layout</title>
+    <link rel="stylesheet" href="/assets/css/testa.css">
+
+    <style>/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: #333;
+}
+
+/* Navigation Bar */
+nav {
+    background-color: #fff;
+    color: #333;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    margin-bottom: 0;
+}
+
+nav .logo h1 {
+    margin: 0;
+    font-size: 25px;
+}
+
+nav .nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav .nav-links li {
+    margin-left: 20px;
+}
+
+nav .nav-links a {
+    color: #333;
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: color 0.3s;
+}
+
+nav .nav-links a:hover {
+    color: #3498db;
+}
+
+/* Main Content */
+main {
+    padding: 20px;
+}
+
+.intro {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 equal-width columns */
+    gap: 20px; /* Space between columns and rows */
+    margin: 20px;
+}
+
+.column {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Image Container */
+.image-container {
+    padding: 20px 0;
+    text-align: center;
+    background-color: #f1f1f1; /* Optional background color */
+    margin-top: 0;
+}
+
+figure {
+    margin: 0;
+}
+
+img {
+    max-width: 100%; /* Ensure the image is responsive */
+    height: auto;
+}
+
+figcaption {
+    font-style: italic;
+    color: #555;
+    margin-top: 10px;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Responsive Design with Media Queries */
+@media (max-width: 768px) {
+    /* For Tablets and Small Screens */
+    .nav-links {
+        display: block;
+        text-align: center;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .column {
+        flex: 1 1 100%; /* Each column takes 100% of the row */
+        margin: 10px 0; /* Spacing between rows */
+    }
+}
+
+@media (max-width: 480px) {
+    /* For Mobile Phones */
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav .logo {
+        margin-bottom: 10px;
+    }
+
+    .content {
+        display: content;
+        flex-direction: column;
+    }
+
+    .column {
+        flex: 1 1 100%; /* Each column takes 100% of the row */
+        margin: 10px 0; /* Spacing between rows */
+    }
+}
+    </style>
 </head>
 <body>
-
-<!--<header>-->
-<!--    <h1>Learn Quantum Computing with me</h1>-->
-<!--</header>-->
-
-<!--<div class="nav-container">-->
-<!--    <nav>-->
-<!--        <a href="#">Home</a>-->
-<!--        <a href="#">Post</a>-->
-<!--        <a href="#">Tutorial</a>-->
-<!--        <a href="#">Research</a>-->
-<!--        <a href="#">Contact</a>-->
-<!--    </nav>-->
-<!--</div>-->
-
-    <!-- Placeholders for the header and footer -->
+    <!-- Navigation Bar -->
     <div id="header-placeholder"></div>
+    <!-- Image Container -->
+<!--    <div class="image-container">-->
+<!--        <figure>-->
+<!--            <img src="./assets/fig/qc.webp" alt="Descriptive Image" style="width: 100%; height: auto;">-->
+<!--        </figure>-->
+<!--    </div>-->
+    <!-- Main Content -->
+    <main>
+        <section class="intro">
+            <h2>Welcome to Our Blog!</h2>
+            <p>Here, you can stay up to date with the latest research and explore in-depth lessons on quantum computing.
+                My goal is to deepen your understanding of this cutting-edge field, providing the resources you need to expand your
+                knowledge on quantum computing.</p>
+        </section>
 
-<main>
-    <h2>Welcome to the blog</h2>
-    <p>Here, you can stay up to date with the latest research and explore in-depth lessons on quantum computing.
-    My goal is to deepen your understanding of this cutting-edge field, providing the resources you need to expand your
-    knowledge on quantum computing.</p>
+        <section class="content">
+            <div class="column">
+                <a href="./Post/post.html" style="text-decoration: none; color: black;">
+                <img src="./assets/fig/qcpost.webp" alt="Quantum Computing" class="column-img">
+                <h3>Latest Posts</h3>
+                <p>Here are some of the most recent articles on quantum computing.</p>
+                </a>
+            </div>
 
-    <div class="blog-post">
-        <h3>Lesson 1: Introduction to HTML</h3>
-        <p>HTML (HyperText Markup Language) is the standard markup language used to create web pages. It provides the structure of a webpage using elements like headings, paragraphs, and links.</p>
-        <ul>
-            <li><strong>Heading:</strong> Defines the titles or subtitles.</li>
-            <li><strong>Paragraph:</strong> Contains text content.</li>
-            <li><strong>Link:</strong> Navigates to other pages or resources.</li>
-        </ul>
-        <p>HTML is essential for building the web. Start practicing by writing simple HTML code!</p>
-    </div>
+            <div class="column">
+                <a href="./Research/research.html" style="text-decoration: none; color: black;">
+                    <img src="./assets/fig/qc.webp" alt="Quantum Computing" class="column-img">
 
-    <div class="blog-post">
-        <h3>Lesson 2: Basics of CSS</h3>
-        <p>CSS (Cascading Style Sheets) is used to style and layout web pages. It allows you to add colors, fonts, and responsive designs.</p>
-        <ul>
-            <li><strong>Selector:</strong> Targets HTML elements.</li>
-            <li><strong>Property:</strong> Defines the style (e.g., color, font-size).</li>
-            <li><strong>Value:</strong> Specifies the property setting (e.g., red, 16px).</li>
-        </ul>
-        <p>CSS makes websites visually appealing. Experiment with different styles to see the impact!</p>
-    </div>
-</main>
-
-<!--<footer>-->
-<!--    <p>&copy; 2024 Learn with Us. All rights reserved.</p>-->
-<!--</footer>-->
+                    <h3>My Research</h3>
+                    <p>Introduce my research on quantum computing.</p>
+                </a>
+            </div>
+            <div class="column">
+                <a href="./Tutorial/tutorial.html" style="text-decoration: none; color: black;">
+                    <img src="./assets/fig/qclearn.webp" alt="Quantum Computing" class="column-img">
+                    <h3>Tutorial</h3>
+                    <p>Learning quantum computing.</p>
+                </a>
+            </div>
+        </section>
+    </main>
 
     <div id="footer-placeholder"></div>
-  <!-- Include the common script for dynamic loading -->
     <script src="./assets/js/common.js"></script>
 </body>
 </html>

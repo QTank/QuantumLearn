@@ -20,7 +20,105 @@
       <p class="post-date">December 15, 2024</p>
 
       <div class="post-content">
+          <h3>Two-qubit Gates</h3>
+          
+            <p>A two-qubit gate is a quantum gate that operates on two qubits simultaneously, introducing quantum entanglement
+				or correlations between them. Two-qubit gates are critical for creating interactions between qubits,
+				which are essential for the functioning of quantum algorithms and quantum circuits.
+			</p>
+
+			<p>The common two-qubit gates include CNOT Gate, Controlled-U Gate, SWAP Gate. </p>
+          
+			<p><b>CNOT gate:</b> the controlled-NOT gate assigns one qubit as the role of control qubit and pairs it
+				with another as the target qubit. The target qubit flips its state when the control qubit is in the state |1>,
+				and remain unchanged when the control qubit is in the state |0>. In classical computing, XOR operation performs a similar function.
+				However, the CNOT gate introduces the superposition and entanglement of quantum mechanics. Unlike classical XOR, the CNOT gate allows qubits to exist in a superposition,
+				representing multiple states simultaneously. The CNOT gate enables entanglement, a fundamental feature of
+                quantum mechanics that allows qubit to be correlated in ways that support quantum parallelism and complex computation.
+            </p>
+
+            <div class="figure-container">
+                <figure>
+                    <img src="../../assets/fig/tutorial/circuit/cnot.png">
+                </figure>
+            </div>
+            <p>The matrix representation of CNOT gate:</p>
+			<p>\[CNOT = \begin{pmatrix}
+            1 & 0 & 0 & 0 \\
+            0 & 1 & 0 & 0 \\
+            0 & 0 & 0 & 1 \\
+            0 & 0 & 1 & 0 \\
+            \end{pmatrix}\]</p>
+			<p><b>CNOT gate operation on the computational basis state</b></p>
+			<p id="cnot">CNOT|00> = |00></p>
+			<p id="cnot">CNOT|01> = |01></p>
+			<p id="cnot">CNOT|10> = |11></p>
+			<p id="cnot">CNOT|11> = |10></p>
+
+			<p></p>
+			<p>The CNOT gate operates the general two-qubit input qubit \(|\psi>\)</p>
+			<p>\[|\psi>=\alpha_{00}|00> + \alpha_{01}|01> + \alpha_{10}|10> + \alpha_{11}|11>\]</p>
+			<p>After applying the CNOT gate to the input qubit \(|\psi>\), </p>
+			<p>
+				\[
+					\begin{align}
+						|\psi'> &= CNOT(\alpha_{00}|00> + \alpha_{01}|01> + \alpha_{10}|10> + \alpha_{11}|11>) \\
+							    &=\alpha_{00}|00> + \alpha_{01}|01> + \alpha_{10}|11> + \alpha_{11}|10>
+					\end{align}
+				\]
+			</p>
+			<p>Thus, the output state \(|\psi'>\), </p>
+			<p>\[|\psi'> =\alpha_{00}|00> + \alpha_{01}|01> + \alpha_{11}|10> + \alpha_{10}|11> \]</p>
+
+            <h3>SWAP Gate</h3>
+            <p><b>SWAP gate:</b> swap the quantum state of two qubits. If the first qubit is in the state |a> and the second qubit
+		is in the state |b>, after applying the SWAP gate, the first qubit is in the state |b> and the second qubit is in the state |a>.</p>
+
+            <div class="figure-container">
+                <figure>
+                    <img src="../../assets/fig/tutorial/swap.png">
+                </figure>
+            </div>
+
+          <p>The matrix representation of SWAP gate:</p>
+        <p>\[SWAP = \begin{pmatrix}
+            1 & 0 & 0 & 0 \\
+            0 & 0 & 1 & 0 \\
+            0 & 1 & 0 & 1 \\
+            0 & 0 & 0 & 1 \\
+            \end{pmatrix}\]</p>
+
+		<p><b>SWAP gate operation on the computational basis state</b></p>
+		<p id="cnot">SWAP|00>=|00></p>
+		<p id="cnot">SWAP|01>=|10></p>
+		<p id="cnot">SWAP|10>=|01></p>
+		<p id="cnot">SWAP|11>=|11></p>
+
+		<p>The SWAP gate operates the general two-qubit input qubit \(|\psi>\)</p>
+        <p>\[|\psi>=\alpha_{00}|00> + \alpha_{01}|01> + \alpha_{10}|10> + \alpha_{11}|11>\]</p>
+        <p>After applying the SWAP gate to the input qubit \(|\psi>\), </p>
+        <p>
+            \[
+                \begin{align}
+                    |\psi'> &= SWAP(\alpha_{00}|00> + \alpha_{01}|01> + \alpha_{10}|10> + \alpha_{11}|11>) \\
+                            &=\alpha_{00}|00> + \alpha_{01}|10> + \alpha_{10}|01> + \alpha_{11}|11>
+                \end{align}
+            \]
+        </p>
+        <p>Thus, the output state \(|\psi'>\), </p>
+        <p>\[|\psi'> =\alpha_{00}|00> + \alpha_{10}|01> + \alpha_{01}|10> + \alpha_{11}|11> \]</p>
+
+        <p>SWAP gate can be decomposed into three CNOT gate. This is useful in quantum circuit design, as it allows to be implemented using a series of simpler operations.</p>
+
+		<p>The SWAP gate can be expressed as a sequence of three CNOT gates: </p>
+		<p>\[SWAP = CNOT_{01} \times CNOT_{10} \times CNOT_{01}\]</p>
+        <div class="figure-container">
+                <figure>
+                    <img src="../../assets/fig/tutorial/swap_cnot.png">
+                </figure>
+            </div>
       </div>
+
     </article>
     </main>
     <div id="footer-placeholder"></div>
