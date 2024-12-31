@@ -18,9 +18,10 @@ console.log("Current path:", window.location.pathname);
 
 console.log("Test", window.location.origin);
 console.log("host", `${window.location.protocol}/${window.location.host}/`)
+console.log
 // Call the function to load the header and footer
 document.addEventListener("DOMContentLoaded", function() {
-    loadHTML("header-placeholder", basePath + "header.html");
-    loadHTML("footer-placeholder", basePath + "footer.html");
+    loadHTML("header-placeholder", basePath + "QuantumLearn/header.html");
+    loadHTML("footer-placeholder", basePath + "QuantumLearn/footer.html");
 });
 
