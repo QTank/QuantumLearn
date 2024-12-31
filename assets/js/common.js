@@ -17,7 +17,7 @@ const basePath = `${window.location.protocol}//${window.location.host}/`;
 
 // Call the function to load the header and footer
 document.addEventListener("DOMContentLoaded", function() {
-    loadHTML("header-placeholder", basePath + "/header.html");
-    loadHTML("footer-placeholder", basePath + "/footer.html");
+    loadHTML("header-placeholder", basePath + "header.html");
+    loadHTML("footer-placeholder", basePath + "footer.html");
 });
 
