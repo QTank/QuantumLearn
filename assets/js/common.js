@@ -13,7 +13,7 @@ function loadHTML(elementId, file) {
     xhr.send();
 }
 
-//const basePath = `${window.location.protocol}//${window.location.host}/`;
+const basePath = `${window.location.protocol}//${window.location.host}/`;
 
 // Call the function to load the header and footer
 document.addEventListener("DOMContentLoaded", function() {
