@@ -17,6 +17,8 @@ const basePath = `${window.location.protocol}//${window.location.host}/`;
 const currentPathTest = window.location.pathname;
 console.log("Current path:", currentPathTest);
 
+console.log("Test", window.location.origin);
+
 // Call the function to load the header and footer
 document.addEventListener("DOMContentLoaded", function() {
     loadHTML("header-placeholder", basePath + "header.html");
