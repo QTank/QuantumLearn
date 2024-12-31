@@ -14,11 +14,10 @@ function loadHTML(elementId, file) {
 }
 
 const basePath = `${window.location.protocol}//${window.location.host}/`;
-const currentPathTest = window.location.pathname;
-console.log("Current path:", currentPathTest);
+console.log("Current path:", window.location.pathname);
 
 console.log("Test", window.location.origin);
-
+console.log("host", `${window.location.protocol}/${window.location.host}/`)
 // Call the function to load the header and footer
 document.addEventListener("DOMContentLoaded", function() {
     loadHTML("header-placeholder", basePath + "header.html");
