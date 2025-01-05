@@ -17,8 +17,7 @@ const basePath = `${window.location.protocol}//${window.location.host}/`;
 
 // Call the function to load the header and footer
 document.addEventListener("DOMContentLoaded", function() {
-    loadHTML("header-placeholder", basePath + "QuantumLearning/header.html");
-    console.log(basePath + "QuantumLearning/header.html");
-    loadHTML("footer-placeholder", basePath + "QuantumLearning/footer.html");
+    loadHTML("header-placeholder", basePath + "QuantumLearn/header.html");
+    loadHTML("footer-placeholder", basePath + "QuantumLearn/footer.html");
 });
 
