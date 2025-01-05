@@ -21,7 +21,72 @@
 
       <div class="post-content">
           <h3>What is multiple-qubit gate?</h3>
-          <p></p>
+          <p>Multiple-qubit gate is an extension of two-qubit gate, designed to operate on more than two
+              qubit simultaneously. It takes multiple qubit inputs and performs a quantum operation across
+              these inputs, often establishing entanglement between qubits.
+          </p>
+
+          <p>The common multiple-qubit gates include Toffoli gate, CSWAP gate</p>
+          <p><b>Toffoli gate:</b> also known as the CCNOT gate, assigns two qubits as control qubit and another qubit as target qubit.
+			The target qubit flips when both control qubits are in the state |1>, and otherwise the target qubit remains unchanged.</p>
+		  <div class="figure-container">
+              <figure>
+                  <img src="../../assets/fig/tutorial/circuit/CCNOT.png">
+              </figure>
+          </div>
+
+          <p>The matrix representation of Toffoli gate or CCNOT gate(the first and second qubit as control qubits and the third qubit as target qubit):</p>
+          <p>\[CCNOT = \begin{pmatrix}
+            1 & 0 & 0 & 0 & 0 & 0 & 0\\
+            0 & 1 & 0 & 0 & 0 & 0 & 0\\
+            0 & 0 & 1 & 0 & 0 & 0 & 0\\
+            0 & 0 & 0 & 1 & 0 & 0 & 0\\
+            0 & 0 & 0 & 0 & 1 & 0 & 0\\
+            0 & 0 & 0 & 0 & 0 & 1 & 0\\
+            0 & 0 & 0 & 0 & 0 & 0 & 1\\
+            0 & 0 & 0 & 0 & 0 & 1 & 0\\
+            \end{pmatrix}\]</p>
+          <p>CCNOT gate operates on the computation basis states.</p>
+          <p id="CNOT">CCNOT|000> = |000></p>
+          <p id="CNOT">CCNOT|001> = |001></p>
+          <p id="CNOT">CCNOT|010> = |010></p>
+          <p id="CNOT">CCNOT|011> = |011></p>
+          <p id="CNOT">CCNOT|100> = |100></p>
+          <p id="CNOT">CCNOT|101> = |101></p>
+          <p id="CNOT">CCNOT|110> = |111></p>
+          <p id="CNOT">CCNOT|111> = |110></p>
+
+
+
+          <p>The CCNOT gate operates the general three-qubit input qubit \(|\psi>\)</p>
+			<p>\[
+                \begin{align}
+                    |\psi> &=\alpha_{000}|000> + \alpha_{001}|001> + \alpha_{010}|10> + \alpha_{011}|011> \\
+                           &=\alpha_{100}|100> + \alpha_{101}|101> + \alpha_{110}|110> + \alpha_{111}|111>
+
+                \end{align}
+                \]</p>
+			<p>After applying the CNOT gate to the input qubit \(|\psi>\), </p>
+			<p>
+				\[
+					\begin{align}
+						|\psi'> &= CCNOT|\psi> \\
+							    &= \alpha_{000}|000> + \alpha_{001}|001> + \alpha_{010}|10> + \alpha_{011}|011>\\
+                                &= \alpha_{100}|100> + \alpha_{101}|101> + \alpha_{110}|111> + \alpha_{111}|110>
+					\end{align}
+				\]
+			</p>
+			<p>Thus, the output state \(|\psi'>\), </p>
+			<p>
+                \[
+					\begin{align}
+						|\psi'> &= \alpha_{000}|000> + \alpha_{001}|001> + \alpha_{010}|10> + \alpha_{011}|011>\\
+
+                                &= \alpha_{100}|100> + \alpha_{101}|101> + \alpha_{110}|111> + \alpha_{111}|110>
+					\end{align}
+				\]
+
+            </p>
       </div>
     </article>
     </main>
