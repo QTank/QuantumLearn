@@ -16,10 +16,216 @@
     <div id="header-placeholder"></div>
     <main class="main-content">
     <article class="blog-post">
-      <h1 class="blog-title">Qubit</h1>
+      <h1 class="blog-title">Quantum Full Adder</h1>
       <p class="post-date">December 15, 2024</p>
 
       <div class="post-content">
+          <h3><b>3.3.4 Quantum full adder</b></h3>
+
+			<p>The add cirucit use CNOT and CCNOT circuits so it is important to know the output state of the target qubit of CNOT and CCNOT.</p>
+			<p>CNOT gate acts on two qubits, A as control qubit and B as target qubit. </p>
+			<p>The output state of CNOT = \(|A>|A \oplus B>\)</p>
+			<p>	It is easy to verify it through true table.
+				When A is |0> as control qubit, the output of B(target qubit) is unchanged.
+				When A is |1> as control qubit, the output state of B(target qubit) flips.
+				Therefore, the output state of target is XOR between the state of A and B.
+			</p>
+			<p>CCNOT gate acts on three qubits, A and B as control qubits and C as target qubit.</p>
+			<p>The output state of CCNOT = \(|(A \cdot B) \oplus C>\)</p>
+			<p>We can see A and B as one qubit(\(A \cdot B\)) to control the target qubit so it is the same as CNOT gate.</p>
+
+			<p>The quantum circuit of full adder as follows:</p>
+
+		  <div class="figure-container">
+			  <figure>
+				  <img src="../../assets/fig/tutorial/circuit/Adder.png">
+			  </figure>
+		  </div>
+
+			<p>We derive the math expression of \(C_{out}\) and S seperately. </p>
+			<p></p>
+			<div>In the stage 1,
+				\[
+					\begin{align}
+					|S> &= |C_{in}> \\
+					|A'> &= |A> \\
+					|B'> &= |B> \\
+					|C_{out}> &= |(AB) \oplus 0> = |AB>
+					\end{align}
+				\]
+			</div>
+			<div>
+				In the state 2,
+				\[
+					\begin{align}
+					|S> &= |C_{in}> \\
+					|A'> &= |A> \\
+					|B'> &= |A \oplus B> \\
+					|C_{out}> &= |(AB) \oplus 0> = |AB>
+					\end{align}
+				\]
+			</div>
+			<div>
+				In the stage 3,
+				\[
+					\begin{align}
+					|S> &= |C_{in}> \\
+					|A'> &= |A> \\
+					|B'> &= |A \oplus B> \\
+					|C_{out}> &= |AB \oplus [C_{in} \cdot (A \oplus B)]>
+					\end{align}
+				\]
+
+				In the stage 4,
+
+					\begin{align}
+					|S> &= |C_{in} \oplus A \oplus B> \\
+					|A'> &= |A> \\
+					|B'> &= |A \oplus B> \\
+					|C_{out}> &= |AB \oplus [C_{in} \cdot (A \oplus B)]>
+					\end{align}
+
+				In the final stage,
+					\begin{align}
+					|S> &= |C_{in} \oplus A \oplus B> \\
+					|A'> &= |A> \\
+					|B'> &= |A \oplus B> \\
+					|C_{out}> &= |AB \oplus [C_{in} \cdot (A \oplus B)]>
+					\end{align}
+				<p>From the equation above, we can see the expression state of |S> equals the math one of S of a full adder.</p>
+
+				<p>However, the expression of \(C_{out}\) is different from the one of a full adder. We can simply the expression to verify that they are the same one.</p>
+				<div>
+					\[
+						\begin{align}
+							|C_{out}> &= |AB \oplus [C_{in} \cdot (A \oplus B)]>
+						\end{align}
+					\]
+					We can use X represents \(A \oplus B\), then
+
+
+					\[
+						\begin{align}
+
+							|C_{out}> &= |AB \oplus [C_{in} \cdot X]> \\
+									  &= |AB \overline{C_{in}X} + \overline{AB} C_{in}X>\\
+									  &= |AB(\overline{C_{in}} + \overline{X}) + (\overline{A}+\overline{B})C_{in}X> \\
+									  &= |AB(\overline{C_{in}} + \overline{A\oplus B}) + (\overline{A}+\overline{B})C_{in}\overline{A\oplus B})> \\
+									  &= |AB(\overline{C_{in}} + AB + \overline{A}\overline{B}) + (\overline{A}+\overline{B})(A\overline{B} + \overline{A}B)C_{in}> \\
+									  &= |AB\overline{C_{in}} + AB + (A\overline{B} + \overline{A}B)C_{in}> \\
+									  &= |AB + (A\overline{B} + \overline{A}B)C_{in}> \\
+									  &= |AB + (A\oplus B) \cdot C_{in}>
+						\end{align}
+
+					\]
+					<p>We can see the expression of \(|C_{out}>\) equals the \(C_{out}\) of a full adder.
+						Therefore, the quantum full adder circuit can have the function of adding two qubits with carry.</p>
+				</div>
+			</div>
+
+			<p>For example, before we use the quantum full adder, we need to prepare the input qubit for
+				the value we want to compute. For example, when A = 0, B = 0, Cin = 1 and A = 1, B = 1, Cin = 1, we need
+				to design quantum circuit to satisfy the condition. I used qiskit simulator to make
+				the quantum circuit and got the measurement outcome of the circuit. The quantum circuit as follows:</p>
+		<div class="figure-container">
+			<figure>
+				<img src="../../assets/fig/tutorial/circuit/adder_preparation_qiskit1.png">
+			</figure>
+		</div>
+		<div class="figure-container">
+			<figure>
+				<img src="../../assets/fig/tutorial/circuit/adder_preparation_qiskit2.png">
+			</figure>
+		</div>
+
+			<p>The first qubit |q0> is Cin, the second |q2> and third qubits |q3> are A and B, the last qubit |q4> is |0> as the input qubits.
+				We prepared input quantum states, one is |A> = |B> = |0>,  |Cin> = |1>, and the other is |A> = |B> = |1>, |Cin> = |1>.
+				In Qiskit, note the first qubit is the rightest one in the figure.
+				The outcome in the figure is |0001> with the probability with 677/1024, and |0111> with 347/1024.
+
+			</p>
+		  <div class="figure-container">
+			  <figure>
+				  <img src="../../assets/fig/tutorial/circuit/adder_qiskit1.png">
+			  </figure>
+		  </div>
+		<div class="figure-container">
+			<figure>
+				<img src="../../assets/fig/tutorial/circuit/adder_qiskit2.png">
+			</figure>
+		</div>
+
+			<p>In the figure, from the right to left, the first qubit of the final result is the sum of A and B, the second and third one are A and B,
+				and the last one is the carry. </p>
+			<p>In the figure, |0001> represents the carry is 0 and the sum of A and B is 1 when A = B = 0, and Cin = 1.
+				Its probability is 653/1024 which is close to 677/1024.
+				|1111> represents the carray is the carry is 1 and the sum of A and B is 1 when A = B = 1, and Cin = 1.
+				Its probability is 371/1024 which is close to 647/1024.
+				It means that the quantum circuit can perform the function of a full adder.
+			</p>
+
+			<p></p>
+			<p>The preceding illustration described a one bit full adder. Now, consider the figure below,
+			representing a two bit full adder composed of two such one bit adders, such as A = 01 and B = |11>.
+				This conceptual framework
+			can be extended to design quantum adders for systems involving multiple bits.</p>
+
+		  <div class="figure-container">
+			<figure>
+				<img src="../../assets/fig/tutorial/circuit/Adder_N.png">
+			</figure>
+		  </div>
+
+			<p>When 01 and 11 are as the input of a two bit full adder, it means that |A0> = |1>,
+			|A1> = |0>, |B> = |1>, and |B>=|1>. The Cout of first adder is as the input Cin of the second adder.
+				The output of |S0>, |S1>, and |Cout> represent the first bit and the second bit of Sum (from right to left),
+			and the carry bit value. The sum of 01 and 11 equals 100 so |S0> = |0>, |S1 > = |0> and |Cout> = |1>.</p>
+
+			<p>
+				When multiple qubits add respectively, it only prepares the input qubits in superposition.
+				When the sum of the 11 and 01, it prepares |A0> = |1>, |A1> = |1>, |B0> = |1>, and |B1> = |0>.
+				when the sum of the 00 and 10, it prepares |A0> = |0>, |A1> = |0>, |B0> = |0>, and |B1> = |1>.
+
+				Therefore, |A0>|B0>|A1>|B1> needs to be |1110> and |0001> in the superposition.
+
+		  <div class="figure-container">
+			<figure>
+				<img src="../../assets/fig/tutorial/circuit/two_bit_adder1.png">
+			</figure>
+		  </div>
+		  <div class="figure-container">
+			<figure>
+				<img src="../../assets/fig/tutorial/circuit/two_bit_adder2.png">
+			</figure>
+		  </div>
+		  <div class="figure-container">
+			<figure>
+				<img src="../../assets/fig/tutorial/circuit/two_bit_adder3.png">
+			</figure>
+		  </div>
+
+			</p>
+			<p>From the outcome of qiskit, qubits are in the superposition with |01100100> and |0000010>(from the right to left in the figure).
+				It illustrates that |A0>|B0>|A1>|B1> is in |1110> and |0001> with the probability of 326/1024 and 698/1024 respectively.
+			</p>
+
+			<div class="figure-container">
+			<figure>
+				<img src="../../assets/fig/tutorial/circuit/two_bit_adder.png">
+			</figure>
+		  </div>
+		  <div class="figure-container">
+			<figure>
+				<img src="../../assets/fig/tutorial/circuit/two_bit_adder5.png">
+			</figure>
+		  </div>
+
+			<p>The outcome |S0>|A0>|B0>|S1>|A1>|B1>|Cout> in the figure is |0001010> and |0110101>(from the right to left in the figure).</p>
+			<p>	|0001010> is |S0> = |0>, |A0> = |0>, |B0> = |0>, |S1> = |1>, |A1> = |0>, |B1> = |1>, |Cout> = |0>, so it means
+				the sum of 00 and 10 equals 010.</p>
+			<p>	|0110101> is |S0> = |0>, |A0> = |1>, |B0> = |1>, |S1> = |0>, |A1> = |1>, |B1> = |0>, |Cout> = |1>, so it means
+				the sum of 11 and 01 equals 100.
+			</p>
       </div>
     </article>
     </main>
