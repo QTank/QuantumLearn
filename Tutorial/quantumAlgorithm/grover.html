@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qubit</title>
+    <link rel="stylesheet" href="../../assets/css/testa.css">
+    <link rel="stylesheet" href="../../assets/css/research.css">
+    <link rel="stylesheet" href="../../assets/css/post.css">
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+</head>
+
+<body>
+    <div id="header-placeholder"></div>
+    <main class="main-content">
+    <article class="blog-post">
+      <h1 class="blog-title">Quantum Search algorithm</h1>
+      <p class="post-date">January 5, 2025</p>
+
+      <div class="post-content">
+        <p>Quantum Search Algorithm, known as Grover's search algorithm, is to search unstructured data for finding the result with highest probability <a href="https://arxiv.org/abs/quant-ph/9605043">[1]</a>.
+            In classical computing, the time complexity of a common search algorithm is O(N). In quantum computing, the complexity of quantum search algorithm is \(O(\sqrt{N})\)
+                which can achieve a quadratic speedup over classical ones.
+            </p>
+
+            <p>I write down the process of the quantum search algorithm according to my idea. It may mislead readers and hope you can understand it. You can contact me and give me advice when you have questions.
+                I will appreciate in advance.
+            </p>
+
+            <p>Suppose we have unstructured data, the number of data is N and we require n = \(log(N)\) qubits.
+                The target of Grover's search is to find the target x with the highest probability. We need to make sure that the x is different from other quantum states.
+                One way is to repeatedly amplify amplitude of the x and decrease other quantum states.
+                The x has the highest probability through several times repeat. At last, we can get the x through measurement.
+            </p>
+            <p>The process of the Grover's algorithm includes encoding, constructing oracle, amplitude amplification, and repeat and measurement.</p>
+
+
+            <p>1. Encoding: convert data to quantum states</p>
+            <p>2. Oracle: construct an oracle \(U_\omega\), which can flip the sign of the amplitude of the solution states, otherwise the quantum states are unchanged. </p>
+            <p>\[ \begin{cases}
+                    U_\omega|x> = -|x> \text{  when x } = \omega\\
+                    U_\omega|x> = |x> \text{   when x } \ne \omega\\
+                    \end{cases}
+                \]</p>
+
+            <p>3. Amplification: increase the probability amplitude of the solutions while decreasing  </p>
+            <p>\[W = 2|\Phi><\Phi| - I\] where \(|\Phi> =  \frac{1}{\sqrt{2^n}}\sum_{x=0}^{2^n-1}|x>\)</p>
+            <p></p>
+            <p>4. Repeat: iteration the step 2 and step 3 <at></at> \(\sqrt{N}\) time, and then measurement.</p>
+            <p>All processes of Grover's search are combined and the structure of the Grover's search is as follows</p>
+          <div class="figure-container">
+              <figure>
+                <img src="../../assets/fig/tutorial/alg/Grover.png">
+              </figure>
+          </div>
+
+            <p>Where V represents an oracle \(U_\omega\) and W represents amplification.</p>
+
+            <p>\[V = I - 2|\omega><\omega| \]</p>
+            <p>\[W = 2|\Phi><\Phi| - I \]</p>
+            <p>where \(|\Phi> = \frac{1}{\sqrt{2^n}}\sum_{x=0}^{2^n-1}|x>\), and \(\omega\) is the target.</p>
+
+            <p>I will explain the process of Grover search one step by step. Before I illustrate the procedure,
+                we need to know operations which can make the computation easy.</p>
+            <p>\[<\omega|\Phi> = \frac{1}{\sqrt{N}} \]</p>
+            <p>\[V|\omega> = (I - 2|\omega><\omega|)|\omega> = -|\omega>\]</p>
+            <p>\[W|\omega> = (2|\Phi><\Phi| - I)|\omega> = \frac{2}{\sqrt{N}}|\Phi> - |\omega>\]</p>
+            <p>\[V|\Phi> = (I - 2|\omega><\omega|)|\Phi> = |\Phi> - \frac{2}{\sqrt{N}}|\omega>\]</p>
+            <p>\[W|\Phi> = (2|\Phi><\Phi| - I)|\Phi> = |\Phi>\]</p>
+
+            <p>We can see the quantum circuit of Grover search. We set \(N = 2^n\), so n qubits are required. After acting n H gates on The input \(|0>^{\otimes n}\), the quantum states are</p>
+            <p>\[|\phi_1> = \frac{1}{\sqrt{N}}\sum_{x=0}^{N-1}|x> = |\Phi>\]</p>
+            <p>After acting V on \(|\phi_1>\), </p>
+            <p>\[|\phi_2> = V|\Phi> = |\Phi> - \frac{2}{\sqrt{N}}|\omega>\]</p>
+            <p>After acting W on \(|\phi_2>\), </p>
+            <p>\[ \begin{align}
+                |\phi_3> &= W|\phi_2> \\
+                        &= W(|\Phi> - \frac{2}{\sqrt{N}}|\omega>) \\
+                        &= |\Phi> - \frac{2}{\sqrt{N}}(\frac{2}{\sqrt{N}}|\Phi> - |\omega>) \\
+                        &= (1 - \frac{4}{N})|\Phi> + \frac{2}{\sqrt{N}}|\omega>
+
+                \end{align}\]</p>
+            <p>After iterations of oracle and amplification, the equation of quantum states of Grover becomes complex.
+            So Grover's search is often explained using geometric intuition. Visualizing Grover's search as a rotation, we can understand how the repeated oracle and amplification amplify the probability of the solution state.</p>
+            <p>For convinience, a quantum state is provided, </p>
+            <p>\[|\Phi'> = \frac{1}{\sqrt{N-1}}\sum_{x\neq\omega}|x>\]</p>
+            <p>\[<\omega|\Phi'> = 0\]</p>
+            <p>It means that \(|\omega> \text{ and } \Phi'> \) has a 90 degree angle.</p>
+            <p>We can suppose the angle \(\theta\) between \(|\Phi> \text{ and } \Phi'>\),</p>
+            <p>\[\cos\theta = <\Phi|\Phi'> = \sqrt{\frac{N-1}{N}}\]</p>
+
+            <p>then \(\sin \theta = \frac{1}{\sqrt{N}} \text{ , } \theta \approx \frac{1}{\sqrt{N}}\) where N is large.</p>
+
+            <p>We can see the angle between \(|\Phi> \text{ and } |\phi_2>\), </p>
+            <p>\[<\Phi|\phi_2> = <\Phi|(|\Phi> - \frac{2}{\sqrt{N}}|\omega>) = 1 - \frac{2}{N} \]</p>
+            <p>\[\cos 2\theta = 1 - \frac{2}{N} \]</p>
+            <p>So the angle between \(|\Phi> \text{ and } |\phi_2>\) is \(2\theta\).</p>
+
+            <p>We also can get the angle between \(|\Phi> \text{ and } |\phi_3>\), </p>
+            <p>\[<\Phi|\Phi_3> = <\Phi|[(1-\frac{4}{N})|\Phi> + \frac{2}{\sqrt{N}}|\omega>] = 1 - \frac{2}{N}\]</p>
+            <p>The angle is also \(2\theta\). </p>
+
+            <p>But We need to be sure the angle between \(|\Phi_2> \text{ and } |\Phi_3>\),  </p>
+            <p>\[\begin{align}
+                <\Phi_2|\Phi_3> &= (<\Phi| - \frac{2}{\sqrt{N}}<\omega|)[(1-\frac{4}{N})|\Phi> + \frac{2}{\sqrt{N}}|\omega>] \\
+                                &= 1 - \frac{8}{N} + \frac{8}{N^2} \\
+                                &= \cos 4\theta
+                \end{align}
+                \]</p>
+            <p>However, \(|\Phi_2> \text{ and } |\Phi_3>\) are not the same quantum state and the angle between them is \(4\theta\),
+                so the rotations between \(|\Phi_2> \text{ and }|\Phi>\), and \(|\Phi_3> \text{ and } |\Phi>\) are two directions.
+                We can draw the relationship between \(|\Phi>, |\Phi'>, |\Phi_2>, |\Phi_3>\), where \(|\Phi_2> = V|\Phi>, |\Phi_3> = WV|\Phi>\),
+            </p>
+            <p></p>
+          <div class="figure-container">
+              <figure>
+                  <img src="../../assets/fig/tutorial/alg/Grover_angle.png">
+              </figure>
+          </div>
+
+
+            <p>After t iterations of applying unitary W and V, the angle between the new quantum state \(|\Phi_t>\) and the target quantum state \(|\Phi>\) is \(2\theta t\).
+            We want the new quantum state \(|\Phi_t>\) to be close to the target \(|\omega>\) so that we can find the target with the highest probability. Then we can have, </p>
+            <p>\[2\theta t = \frac{\pi}{2} - \theta\]</p>
+            <p>\[t = \frac{\pi}{4\theta} - \frac{1}{2} \approx \frac{\pi\sqrt{N}}{4} \approx \sqrt{N}\] </p>
+            <p>This means that we find the target after about \(\sqrt{N}\) iterations of applying the unitary W and V. </p>
+
+            <h3>Example on Qiskit</h3>
+            <p>The search solution space is {000, 001, 010, 011, 100, 101, 110, 111} and the targets are 011 and 110. </p>
+          <div class="figure-container">
+              <figure>
+                    <img src="../../assets/fig/tutorial/alg/Grover_code1.png">
+              </figure>
+          </div>
+
+          <div class="figure-container">
+              <figure>
+                <img src="../../assets/fig/tutorial/alg/Grover_code2.png">
+              </figure>
+          </div>
+          <h3>Result</h3>
+            <p>We can see the result which includes 011 and 110 with the highest probabilities. It proves that we can get the target through Grover's search. Note that the Oracle will be designed according to the target.</p>
+      </div>
+    </article>
+    </main>
+    <div id="footer-placeholder"></div>
+    <script src="../../assets/js/common.js"></script>
+</body>
+</html>
