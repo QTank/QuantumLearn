@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qubit</title>
+    <link rel="stylesheet" href="../../assets/css/testa.css">
+    <link rel="stylesheet" href="../../assets/css/research.css">
+    <link rel="stylesheet" href="../../assets/css/post.css">
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+</head>
+
+<body>
+    <div id="header-placeholder"></div>
+    <main class="main-content">
+    <article class="blog-post">
+      <h1 class="blog-title">Quantum counting</h1>
+      <p class="post-date">January 5, 2025</p>
+
+      <div class="post-content">
+        <p>Quantum counting is a quantum algorithm for estimating the number of solutions for a given search set.
+                In a search problem, how to quickly determine the number of solutions? In classical computing, it requires
+                the time complexity of O(N), where N represents the length of a search data set. Compared to classical computing,
+                the time complexity of quantum counting is O(\( \sqrt{N} \)). Sometimes the number of solutions are required to be found,
+                and it also is used to decide whether there is a solution in the dataset. Therefore, it is important to introduce the quantum counting algorithm.</p>
+  			<p>Define quantum counting from <a href="https://en.wikipedia.org/wiki/Quantum_counting_algorithm">[1]</a>.</p>
+
+            <p>\[
+                f(x) = \begin{cases}
+                1& x \in B \\
+                0& x \notin B \\
+                \end{cases}
+                \]</p>
+            <p>B is a set of solutions (that is a subset of \(\{0, 1\}^n\)) and the size of the solution is N = \(2^n\). </p>
+            <p>The core of the quantum counting algorithm is to estimate the eigenvector of Grover operator.
+                I will explain why we need to use Grover operator. Firstly, we suppose two quantum states which are the same as Grover search: </p>
+            <p>\[|\alpha> = \frac{1}{\sqrt{N-M}}\sum_{x \notin B}|x>\]</p>
+            <p>\[|\beta> = \frac{1}{\sqrt{M}}\sum_{x \in B}|x>\]</p>
+
+            <p>Where M is the solution of quantum counting. </p>
+            <p>\[|\Phi> = \frac{1}{\sqrt{N}}\sum_{x=0}^{N-1}|x> = \sqrt{\frac{N-M}{N}}|\alpha> + \sqrt{\frac{M}{N}}|\beta>\] </p>
+            <p>As we have introduced the Grover operator in Grover's search, the matrix: </p>
+            <p>\[G = \begin{pmatrix}
+                \cos \theta & -\sin \theta \\
+                \sin \theta & \cos \theta \\
+                \end{pmatrix}
+                \]</p>
+            <p>Note that the \(\theta\) is the angle between \(|\Phi> \text{ and } G|\Phi>\),
+                and also equals the double of the angle between \(|\phi> \text{ and } |\alpha> \).</p>
+            <p>Now I give the proof of the Grover operator G. </p>
+            <p>Firstly, calculate the angle between \(|\Phi> \text{ and } |\alpha>\)</p>
+            <p>\[\cos\frac{\theta}{2} = <\Phi|\alpha> = \sqrt{\frac{N-M}{N}} \]</p>
+            <p>Then, \[\sin\frac{\theta}{2} = \sqrt{\frac{M}{N}}\]</p>
+            <p>\[\sin\theta = 2 \sin\frac{\theta}{2}\cos\frac{\theta}{2} = \frac{2\sqrt{M(N-M)}}{N}\]</p>
+            <p>\[\cos\theta = \frac{N-2M}{N}\]</p>
+            <p>After applying G on \(|\alpha>\), </p>
+            <p>\[\begin{align}
+
+                G|\alpha> &= WV|\alpha> \\
+                          &= (2<\varphi|\varphi> - I)|\alpha> \\
+                          &= 2\sqrt{\frac{N-M}{N}}|\Phi> - |\alpha> \\
+                          &= 2\sqrt{\frac{N-M}{N}}(\sqrt{\frac{N-M}{N}}|\alpha> + \sqrt{\frac{M}{N}}|\beta>) - |\alpha> \\
+                          &= \frac{N-2M}{N}|\alpha> + \frac{2\sqrt{M(N-M)}}{N}|\beta> \\
+                          &= \cos\theta|\alpha> + \sin\theta|\beta> \\
+                \end{align}
+                \]</p>
+            <p>After applying G on \(|\beta>\), </p>
+            <p>\[\begin{align}
+                G|\beta> &= WV|\beta> = (I - 2<\Phi|\Phi>)|\beta> \\
+                         &= |\beta> - 2\sqrt{\frac{M}{N}}|\Phi> \\
+                         &= |\beta> - 2\sqrt{\frac{M}{N}}(\sqrt{\frac{N-M}{N}}|\alpha> + \sqrt{\frac{M}{N}}|\beta>) \\
+                         &= (1 - \frac{2M}{N})|\beta> - \frac{2\sqrt{M(N-M)}}{N}|\alpha> \\
+                         &= -\sin\theta|\alpha> + \cos\theta|\beta> \\
+                \end{align}
+                \]</p>
+            <p>\(|\alpha> \text{ and } \beta> \) is a group of orthogonal vectors as orthogonal basis of the operator G, </p>
+
+            <p>We can suppose the matrix of G, \(<\alpha| = [1, 0] \text{ and } <\beta| = [0, 1]\)</p>
+            <p>\[G = \begin{pmatrix}
+                    A & B \\
+                    C & D \\
+                \end{pmatrix}
+                \]</p>
+            <p>\[G|\alpha> = \begin{pmatrix}
+
+                A & B\\
+                C & D \\
+                \end{pmatrix} \begin{pmatrix}
+                1 \\
+
+                0\\
+                \end{pmatrix}
+                = \begin{pmatrix}
+                A \\
+                C \\
+                \end{pmatrix} = A|\alpha> + C|\beta>
+                \]</p>
+            <p>Then, we can get </p>
+            <p>\[ A = \cos\theta\]</p>
+            <p>\[ C = \sin\theta\]</p>
+            <p>\[
+                G|\beta> = \begin{pmatrix}
+                A & B \\
+                C & D \\
+                \end{pmatrix} \begin{pmatrix}
+                0 \\
+                1 \\
+                \end{pmatrix} = \begin{pmatrix}
+                B \\
+                D \\
+                \end{pmatrix} = B|\alpha> + D|\beta>\]</p>
+            <p>Then, we can get, </p>
+            <p>\[ B = -\sin\theta\]</p>
+            <p>\[ D = \cos\theta\]</p>
+            <p>This is the proof of the operator G.</p>
+            <p>When we know the matrix of the operator G, it is easy to know the eigenvalue of G is \(e^{\pm i\theta}\). Also, we know, </p>
+            <p>\[\sin(\frac{\theta}{2}) = \sqrt{\frac{M}{N}}\]</p>
+            <p>When we estimate the eigenvalue of G, it is easy to get the value of M = \(N\sin^2{\frac{\theta}{2}}\). </p>
+            <p>The circuit consists of two registers, one has t qubits and the other has n qubits. It is as follows</p>
+          <div class="figure-container">
+              <figure>
+                  <img src="../../assets/fig/tutorial/alg/counting/counting.png">
+              </figure>
+          </div>
+
+            <h3>Example on Qiskit</h3>
+            <p>The Grover operator is from <a href="grover.html">Grover's search</a>. The search range is {000, 001, 010, 011, 100, 101, 110, 111} and the targets are 011 and 110 so the number of solutions is 2. </p>
+          <div class="figure-container">
+              <figure>
+                <img src="../../assets/fig/tutorial/alg/counting/counting_code1.png">
+                <img src="../../assets/fig/tutorial/alg/counting/counting_code2.png">
+                <img src="../../assets/fig/tutorial/alg/counting/counting_code3.png">
+              </figure>
+          </div>
+
+      </div>
+    </article>
+    </main>
+    <div id="footer-placeholder"></div>
+    <script src="../../assets/js/common.js"></script>
+</body>
+</html>
