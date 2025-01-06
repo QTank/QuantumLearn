@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mRNA Codon Optimization</title>
+    <link rel="stylesheet" href="../../assets/css/testa.css">
+    <link rel="stylesheet" href="../../assets/css/research.css">
+    <link rel="stylesheet" href="../../assets/css/post.css">
+
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+
+    <style>
+        table {
+            width: 85%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            align: center;
+        }
+        th, td {
+            padding: 5px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #fff;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header-placeholder"></div>
+
+    <main class="main-container">
+        <article class="blog-post">
+            <h1 class="blog-title">Introduction to Quantum Computing</h1>
+            <p class="post-date">December 15, 2024</p>
+            <div class="post-content">
+                <h3>What is quantum computing? </h3>
+                <p>Quantum computing is a revolutionary field that promises to solve problems far beyond the capabilities of traditional computers. By harnessing the strange and counterintuitive properties of quantum mechanics, quantum computers can process information in fundamentally new ways, opening the door to advances in science, technology, and industry.</p>
+                <p>At its core, quantum computing is a type of computation that uses quantum bits (or qubits) instead of classical bits. While classical bits can be either 0 or 1, qubits can exist in a combination of states simultaneously, thanks to a quantum phenomenon known as superposition. This unique property allows quantum computers to perform many calculations at once, potentially solving certain problems exponentially faster than classical computers.</p>
+                <p>In addition to superposition, quantum computing leverages other quantum mechanical phenomena such as entanglement and quantum interference, which enable it to solve complex problems that are currently intractable for classical systems.</p>
+                <h3>The current quantum computers</h3>
+                <p>Quantum computers come in several types, categorized by the physical systems used to implement qubits
+                    and how they process quantum information. Each type has unique advantages and challenges, making
+                    them suitable for different applications and research directions. Below are the main types of
+                    quantum computers:
+                Superconducting,
+                Trapped Ion,
+                Photonic,
+                Neutral Atom,
+                Quantum,
+                Topological,
+                Topological,
+                </p>
+
+                <table>
+                    <thead>
+                        <th>Type</th>
+                        <th>Key Advantage</th>
+                        <th>Primary Challenge</th>
+                        <th>Companies</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Superconducting</td>
+                            <td>High speed, scalable</td>
+                            <td>Require cryogenic temperatures</td>
+                            <td>IBM, Google, Rigetti</td>
+                        </tr>
+                        <tr>
+                            <td>Trapped ion</td>
+                            <td>High fidelity, long coherence</td>
+                            <td>Slower gate speeds</td>
+                            <td>IonQ, Honeywell</td>
+                        </tr>
+                        <tr>
+                            <td>Photonic</td>
+                            <td>Room temperature</td>
+                            <td>Photon generation/detection</td>
+                            <td>Xanadu, PsiQuantum</td>
+                        </tr>
+                        <tr>
+                            <td>Neutral Atom</td>
+                            <td>Compact and scalable arrays</td>
+                            <td>Precise laser control</td>
+                            <td>Pasql</td>
+                        </tr>
+                        <tr>
+                            <td>Quantum Annealers</td>
+                            <td>Effective for optimization</td>
+                            <td>Limited problem</td>
+                            <td>D-wave</td>
+                        </tr>
+                        <tr>
+                            <td>Topological</td>
+                            <td>Error-resistant, high stability</td>
+                            <td>Experimental, unproven</td>
+                            <td>Microsoft</td>
+                        </tr>
+                        <tr>
+                            <td>Semiconductor</td>
+                            <td>cost efficiency, room temperature</td>
+                            <td>short coherence, high error rates</td>
+                            <td>Google</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p></p>
+                <h3>Key Principles of Quantum Computing</h3>
+
+                <p><b>1. Superposition</b></p>
+                <p>&nbsp;    A qubit can exist in a superposition of 0 and 1, allowing quantum computers to perform parallel computations.</p>
+                <p>&nbsp;    For example, while a classical computer might need to test each path in a maze one by one, a quantum computer can explore all paths simultaneously.</p>
+                <p><b>2. Entanglement</b></p>
+
+                <p>&nbsp;    When two qubits are entangled, the state of one qubit is directly related to the state of the other, no matter how far apart they are.</p>
+                <p>&nbsp;    Entanglement enables the massive parallelism that gives quantum computers their power.</p>
+
+                <p><b>3. Quantum Interference</b></p>
+                <p>&nbsp;    Quantum computers use interference to amplify the probability of correct solutions while canceling out incorrect ones.</p>
+<!--                <p>&nbsp;    </p>-->
+                <p><b>4. Quantum Gates and Circuits</b></p>
+                <p>&nbsp;    Quantum gates manipulate qubits and are the building blocks of quantum computations.
+</p>
+                <p>&nbsp;    These gates are combined into circuits to perform quantum algorithms.
+</p>
+                <h3>How Does Quantum Computing Differ from Classical Computing?</h3>
+
+                <p><b>1. Bits vs. Qubits</b></p>
+                <p>&nbsp;     Classical computers use bits, which are binary units of information (either 0 or 1).</p>
+                <p>&nbsp;     Quantum computers use qubits, which can represent 0, 1, or any quantum superposition of these states.</p>
+
+                <p><b>2. Sequential vs. Parallel</b></p>
+                <p>&nbsp;     Classical computers process tasks sequentially or with limited parallelism.</p>
+                <p>&nbsp;     Quantum computers, through superposition, can explore many computational pathways simultaneously.</p>
+
+                <p><b>3. Deterministic vs. Probabilistic</b></p>
+                <p>&nbsp;     Classical computations follow deterministic rules.</p>
+                <p>&nbsp;     Quantum computations are probabilistic, meaning the result is based on the probabilities of different quantum states.</p>
+
+            </div>
+        </article>
+    </main>
+    <div id="footer-placeholder"></div>
+    <script src="../../assets/js/common.js"></script>
+</body>
+</html>
