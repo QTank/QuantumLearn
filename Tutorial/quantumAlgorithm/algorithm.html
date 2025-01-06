@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mRNA Codon Optimization</title>
+    <link rel="stylesheet" href="../../assets/css/testa.css">
+    <link rel="stylesheet" href="../../assets/css/research.css">
+    <link rel="stylesheet" href="../../assets/css/post.css">
+
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+
+    <style>
+        .step-content {
+            margin-top: 10px;
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header-placeholder"></div>
+
+    <main class="main-container">
+        <article class="blog-post">
+            <h1 class="blog-title">Quantum Algorithm</h1>
+
+            <div class="post-content">
+                <p><b>What is Quantum Algorithm?</b></p>
+                <p>In quantum computing, a quantum algorithm is an algorithm designed to run on a quantum computer, with the quantum
+                circuit model being the most commonly used framework<a href="https://en.wikipedia.org/wiki/Quantum_algorithm">[1]</a>.
+                In the quantum circuit model, various quantum gates serves as the fundamental building blocks that manipulate
+                the quantum states of qubits and perform computations. Unlike classical gates which operate on classical bits (0 or 1)
+                and can only process one input at a time, quantum gates act on qubits in superposition, which allows them to
+                process multiple inputs simultaneously. This capability, combined with quantum entanglement, enables quantum circuits
+                to execute specific quantum algorithms, offering the potential for exponential speedup over classical computers for certain tasks.</p>
+
+            <p>Quantum algorithm can be categorized into two main types, full quantum circuits and hybrid classical-quantum algorithms.
+                In full quantum circuits, the entire algorithm is executed on a quantum computer using quantum gates. With quantum algorithms,
+                full quantum circuits require a large number of qubits and gates to achieve a specific function. However, the number of qubits is limited
+                in a real quantum computer. In addition, the quantum gate fidelity is not high and current quantum circuits suffer from high quantum errors. It is challenging
+                to achieve a quantum algorithm with a large number of quantum gates. Also, quantum circuits often require qubits
+                to interact with each other through two-qubit gates. However, qubit connectivity is limited because of the physical layout
+                of the qubits and the limitations of the underlying hardware architecture. Some quantum circuits can not be executed efficiently so
+                quantum optimization technology can reduce the effects of limited qubit connectivity. It converts a quantum circuit to an equivalent circuit
+                which can be efficiently executed on the available quantum hardware.</p>
+
+
+                <p></p><b>1. Full quantum algorithms</b> </p>
+                <p>In this approach, the entire algorithm is executed on a quantum computer using only quantum gates.
+                Full quantum circuits often require a large number of qubits and quantum gates to achieve specific computational tasks. However,
+                real quantum computers face several challenges, such as the restricted number of qubits, low gate fidelity, and high error rates.
+                These challenges make it difficult to implement complex quantum algorithms that involve a large number of qubits and quantum gates.
+                Moreover, quantum gates often rely on qubit reactions through two-qubit gates. Due to the physical layout of qubits and the constraints
+                of current hardware architectures, qubit connectivity is limited. This limitation can hinder the efficient execution of certain quantum circuits.
+                To address these limitations, quantum optimization techniques are used to convert a quantum circuit to an equivalent one that can be executed
+                more efficiently on the available computer hardware, mitigating the effects of limited qubit connectivity.
+                </p>
+
+
+                <p></p><b>2. Hybrid classical-quantum algorithms</b> </p>
+                <p>These algorithms combine classical and quantum computation, with certain parts of
+                the algorithm executed on classical computers and others on quantum computers. Hybrid approaches can alleviate some challenges, such as
+                gate fidelity and coherence time, by offloading certain computations to classical processors. This strategy aims to
+                efficiently execute quantum algorithms within the constraints of current technology. Additionally, certain
+                tasks that are computationally intensive on quantum hardware may be more easily performed on classical computers.
+                By integrating classical computing, hybrid algorithms can simplify the complexity of quantum algorithms. For example,
+                finding the lowest energy state in a quantum system can be challenging for quantum hardware, so a classical optimization method
+                like gradient descent can be used to handle this task, making the overall algorithm more practical and efficient.
+                </p>
+
+            <p>Now, I will introduce some basic quantum algorithms. These foundational algorithms are key to understanding
+            how quantum computing can solve certain problems more efficiently than classical methods. They also serve as building
+            blocks for more advanced quantum applications, showcasing the unique strengths of quantum computers.</p>
+            <p>The common quantum algorithms are as follow: </p>
+            <p><a href="BV.html" style="text-decoration: none;">1. Bernstein–Vazirani algorithm</a></p>
+            <p><a href="grover.html">2. Quantum Search Algorithm</a></p>
+            <p><a href="qft.html">3. Quantum Fourier Transform</a></p>
+            <p><a href="qpe.html">4. Quantum Phase Estimation</a></p>
+            <p><a href="shor.html">5. Quantum Shor</a></p>
+            <p><a href="counting.html">6. Quantum Counting</a></p>
+            <p><a href="vqe.html">7. Variational Quantum Eigenvalue</a></p>
+<!--            <p><a href="hhl.html">HHL</a></p>-->
+<!--            <p><a href="qml.html">Quantum Machine learning</a></p>-->
+            <p></p>
+            </div>
+        </article>
+    </main>
+    <div id="footer-placeholder"></div>
+    <script src="../../assets/js/common.js"></script>
+</body>
+</html>
