@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Layout</title>
+    <link rel="stylesheet" href="../assets/css/testa.css">
+
+    <style>
+    .container-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 20px;
+    }
+
+.box {
+  position: relative;
+        width: 30%;
+        height: 200px;
+        border: 1px solid #ccc;
+        padding: 20px;
+        background-color: #f0fff0; /* Lighter than lightgreen, a very soft pastel green */
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Center the content vertically */
+        align-items: center; /* Center the content horizontally */
+        text-align: center;
+        text-decoration: none;
+}
+
+.date {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  font-size: 14px;
+  color: #555;
+}
+
+.title {
+  font-size: 18px;
+        font-weight: bold;
+        color: #333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-grow: 1;
+}
+
+.read-more {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  font-size: 14px;
+  color: #007bff;
+  cursor: pointer;
+}
+
+.arrow {
+  margin-left: 5px;
+}
+
+@media (max-width: 768px){
+    .container-row{
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    .box{
+        width: 80%;
+    }
+
+}
+
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div id="header-placeholder"></div>
+    <!-- Image Container -->
+<!--    <div class="image-container">-->
+<!--        <figure>-->
+<!--            <img src="./assets/fig/qc.webp" alt="Descriptive Image" style="width: 100%; height: auto;">-->
+<!--        </figure>-->
+<!--    </div>-->
+    <!-- Main Content -->
+    <main>
+        <section class="intro">
+            <h2>Latest Post!</h2>
+        </section>
+
+        <div class="container-row">
+  <div class="box">
+    <div class="date">December 15, 2024</div>
+    <div class="title">‘A truly remarkable breakthrough’: Google’s new quantum chip achieves accuracy milestone</div>
+    <div class="read-more">
+<!--        <a href="12_15.html" style="text-decoration: none; color: black;">-->
+            <span>Read It</span>
+      <span class="arrow">→</span>
+<!--        </a>-->
+    </div>
+  </div>
+  <div class="box">
+    <div class="date">December 14, 2024</div>
+    <div class="title">Title 2</div>
+    <div class="read-more">
+      <span>Read It</span>
+      <span class="arrow">→</span>
+    </div>
+  </div>
+  <div class="box">
+    <div class="date">December 13, 2024</div>
+    <div class="title">Title 3</div>
+    <div class="read-more">
+      <span>Read It</span>
+      <span class="arrow">→</span>
+    </div>
+  </div>
+</div>
+
+    </main>
+
+<!--    <footer>-->
+<!--        <p>&copy; 2024 My Website. All rights reserved.</p>-->
+<!--    </footer>-->
+    <div id="footer-placeholder"></div>
+    <script src="../assets/js/common.js"></script>
+</body>
+</html>
